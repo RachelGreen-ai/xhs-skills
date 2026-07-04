@@ -69,6 +69,8 @@ If the user does not know the template style, read `references/template-style-li
    - Use `scripts/render_cover_pack.py` when producing PNGs from a cover JSON spec.
    - Use HTML/CSS, Playwright, PIL, or another deterministic renderer if adapting the workflow.
    - Use only two text roles: bold big main title and thin subtitle/supporting text.
+   - Place the bold main title in negative space around the portrait; it must not overlay the person.
+   - If the user provides a subtitle, render it clearly. Do not omit it or hide it as tiny edge decoration.
    - Place the thin subtitle on a slight curve along the portrait outline when possible.
    - For final covers, prefer contour title placement: short title chunks orbit the person outline instead of sitting in rows.
 8. Package the output.
@@ -122,6 +124,7 @@ python3 selfie-xhs-cover-studio/scripts/render_cover_pack.py \
 - Covers must work at phone thumbnail size.
 - Chinese text must be real text rendered by a deterministic layer, not hallucinated inside the generated image.
 - Use only two text roles: bold big main title and thin subtitle/supporting text.
+- Main title must not overlay the portrait cutout; subtitle must be present when provided.
 - Use only two base background modes: clean low-saturation solid color, or retained selfie background with thick white portrait outline.
 - Details sell the image: preserve small labels, edge texture, paper/grid/doodle treatments, portrait sticker edges, type angle, and layer depth when applying a template.
 - Use Xiaohongshu-native visual language: bold outlined headlines, large portrait cutouts, contour title stickers, light doodles, and information-rich layouts. Use bright blocks only for explicitly loud/pop variants.

@@ -444,6 +444,28 @@ def draw_contour_chunks(image: Image.Image, variant: dict[str, Any], width: int,
     return True
 
 
+def draw_visible_contour_subtitle(image: Image.Image, variant: dict[str, Any], width: int, height: int) -> None:
+    subtitle = str(variant.get("subtitle", "")).strip()
+    if not subtitle:
+        return
+
+    palette = variant.get("palette", {})
+    face = font(int(variant.get("subtitle_size", 48)), "subtitle")
+    center = variant.get("subtitle_center", [0.64, 0.58])
+    draw_arc_text(
+        image,
+        subtitle,
+        (resolve_position(center[0], width), resolve_position(center[1], height)),
+        int(variant.get("subtitle_radius", 360)),
+        float(variant.get("subtitle_start_angle", 18)),
+        float(variant.get("subtitle_angle_step", 6.8)),
+        face,
+        palette.get("subtitle_text", palette.get("muted", "#fffaf0")),
+        int(variant.get("subtitle_stroke_width", 2)),
+        palette.get("subtitle_stroke", palette.get("title_stroke", "#173d35")),
+    )
+
+
 def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) -> Image.Image:
     width = int(canvas.get("width", DEFAULT_CANVAS["width"]))
     height = int(canvas.get("height", DEFAULT_CANVAS["height"]))
@@ -467,6 +489,8 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
 
     if layout == "contour":
         draw_contour_chunks(image, variant, width, height)
+        if variant.get("subtitle") and not variant.get("arc_subtitles"):
+            draw_visible_contour_subtitle(image, variant, width, height)
         badge = variant.get("badge")
         if badge:
             badge_font = font(int(variant.get("badge_size", 36)), "subtitle")

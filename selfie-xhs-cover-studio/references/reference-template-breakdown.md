@@ -8,9 +8,9 @@ Important: do not package third-party reference images as final marketplace asse
 
 A template feels expensive because of small, repeated decisions:
 
-- title has a distinct shape: slant, overlap, alternating scale, or contour placement
+- title has a distinct shape: slant, alternating scale, or contour placement in negative space
 - text has strong readable edges: stroke, shadow, highlight, or glow
-- portrait has separation: thick sticker outline, drop shadow, or foreground overlap
+- portrait has separation: thick sticker outline, drop shadow, or foreground overlap with non-title decorations
 - background has texture: grid, photo tiles, blur, paper, dots, diagonal scratches, or sun flare
 - small labels feel intentional: short badge, micro English, category tag, date, or hashtag
 - decorations follow the composition: arrows, rings, dashed lines, stars, squiggles, not random filler
@@ -25,7 +25,7 @@ Useful details to preserve in the template:
 - dark frame makes all inner elements pop
 - collage tiles create instant "resource list / recommendation" meaning
 - title is split into stacked chunks, tilted slightly, with thick dark outline and bright fill
-- portrait overlaps the collage and title area, creating depth
+- portrait overlaps collage cards or banners to create depth, while the main title stays off the portrait cutout
 - bottom diagonal banner carries a second hook, not a long sentence
 - edge microcopy and repeated small words create density without competing with the main title
 
@@ -112,7 +112,7 @@ Use for:
 
 Template instruction:
 
-Use a warm outdoor/photo background, one large portrait, large pale-yellow title chunks around the person, sparse white arcs, and one tiny hashtag. Keep the emotional title short.
+Use a warm outdoor/photo background, one large portrait, large pale-yellow title chunks around but not on top of the person, sparse white arcs, and one tiny hashtag. Keep the emotional title short.
 
 ## Buyer-Facing Template Names
 

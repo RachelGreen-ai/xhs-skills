@@ -18,7 +18,7 @@ If the cover only works when opened full-screen, redesign it.
 - Use a real cutout or high-quality image edit when possible.
 - Add a thick white sticker outline around the person. This is mandatory when retaining the selfie/photo background.
 - Add a thin black outer edge or shadow outside the white outline when the background is busy.
-- Let the person overlap the text or background layers; flat separated cards feel less native.
+- Let the person overlap background decorations and small accents, but never let the main title cover the face, body, or key silhouette.
 - Preserve the original photo background when it adds context, but crop or blur it so the original small person does not repeat behind the cutout.
 
 ## Background Rules
@@ -34,11 +34,13 @@ Do not use busy generated backgrounds, generic gradients, large collage/photo ti
 
 - Keep title copy short. Prefer 3-5 chunks, not a sentence.
 - Arrange title chunks around the person contour: near head, shoulder, waist, or body edge.
+- Main title chunks must sit in negative space around the portrait. They may hug the outline, but they must not overlay the portrait cutout.
 - Do not stack everything in horizontal rows.
 - Do not place important text at the extreme image edges.
 - Use exactly two text roles:
   - main title: bold, large, chunky, feed-readable
-  - subtitle/supporting text: thin font, smaller, preferably curved lightly along the portrait outline
+  - subtitle/supporting text: thin font, visibly readable, preferably curved lightly along the portrait outline
+- If the user provides a subtitle, it is mandatory: place it clearly, usually as thin curved text along the portrait outline or as a small readable line in safe space.
 - Use one unified title color per cover. For premium covers, prefer cream, warm white, mint-white, or pale lemon with dark green/charcoal stroke.
 - Make the title playful through font shape, rotation, chunky scale, and contour placement; do not rely on colored word backgrounds for energy.
 - Do not put a colored background block behind every title word by default. Use text shape, stroke, shadow, and placement first.
@@ -54,9 +56,9 @@ Do not use busy generated backgrounds, generic gradients, large collage/photo ti
 Do not introduce many fonts. Covers should use only:
 
 - Bold title font: the large headline chunks; use bundled `assets/fonts/ZCOOLKuaiLe-Regular.ttf` or another bold CJK display font.
-- Thin subtitle font: small labels, subtitle, curved contour text, micro English/Chinese helper text; use a light CJK font such as STHeiti Light, Hiragino, or another thin readable font.
+- Thin subtitle font: subtitle, curved contour text, small labels, and micro English/Chinese helper text; use a light CJK font such as STHeiti Light, Hiragino, or another thin readable font.
 
-The main title carries impact. The thin subtitle adds polish and can follow the white portrait outline with a slight arc. Avoid multiple decorative fonts in one cover.
+The main title carries impact and must not cover the person. The thin subtitle adds polish and must be visible when provided; it can follow the white portrait outline with a slight arc. Avoid multiple decorative fonts in one cover.
 
 ## Recommended Contour Title Pattern
 
@@ -85,6 +87,8 @@ Keep these chunks visually close to the cutout outline. They should feel like st
 - tiny portrait cards
 - long subtitles
 - one-line-one-row PPT layouts
+- main title overlapping the face, body, or portrait cutout
+- missing subtitle when the user provided one
 - many unrelated colors in title text
 - more than two font roles
 - busy generated backgrounds
@@ -102,7 +106,7 @@ When the user does not specify a style, start here:
 - retain useful real-photo background context
 - add one large portrait cutout with cream/white outline
 - use 4 large title chunks arranged around the person contour
-- add one thin curved subtitle around the portrait outline when it improves polish
+- add one thin curved subtitle around the portrait outline whenever the user provides a subtitle
 - use one title fill color: cream, warm white, or mint-white
 - use deep green or charcoal stroke
 - add only 1-3 small accents: soft ring, hand-drawn squiggle, or tiny label

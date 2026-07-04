@@ -15,7 +15,7 @@
       "name_en": "Premium Contour Portrait",
       "best_for": ["AI career pivot", "founder story", "premium personal brand"],
       "detail_markers": ["cream sticker outline", "contour title chunks", "subtle grid texture", "tiny diary label", "soft doodle accent"],
-      "prompt_hint": "Retain useful real-photo background context, create a large portrait cutout with a cream sticker outline, and place 3-5 large title chunks around the person contour. Use cream or mint-white title text with deep green or charcoal stroke. No colored title blocks."
+      "prompt_hint": "Retain useful real-photo background context, create a large portrait cutout with a cream sticker outline, and place 3-5 large title chunks around the person contour without covering the portrait. Use cream or mint-white title text with deep green or charcoal stroke. No colored title blocks."
     },
     {
       "id": "food-collage-sticker",
@@ -46,8 +46,8 @@
       "name_cn": "阳光故事杂志风",
       "name_en": "Sunlit Editorial Story",
       "best_for": ["personal essay", "emotional story", "mindset", "gentle transformation"],
-      "detail_markers": ["sunlit natural background", "large elegant yellow title", "white line arcs", "tiny hashtag", "short bottom editorial line", "portrait/title overlap"],
-      "prompt_hint": "Use a sunlit outdoor/photo background, portrait on one side, elegant oversized title chunks, and minimal white arcs or line accents. Keep the palette leaf green, warm sunlight, pale yellow, and white."
+      "detail_markers": ["sunlit natural background", "large elegant yellow title", "white line arcs", "tiny hashtag", "short bottom editorial line", "portrait/title proximity without overlap"],
+      "prompt_hint": "Use a sunlit outdoor/photo background, portrait on one side, elegant oversized title chunks near but not on top of the portrait, and minimal white arcs or line accents. Keep the palette leaf green, warm sunlight, pale yellow, and white."
     }
   ]
 }

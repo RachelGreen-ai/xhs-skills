@@ -29,7 +29,9 @@ If the buyer does not know which style to choose, recommend 2-3 based on topic:
 All templates share the same foundation:
 
 - Typography: exactly two roles, bold big main title and thin supporting text.
-- Supporting text: small, thin, and when possible lightly curved along the portrait outline.
+- Main title: bold, large, and placed in negative space around the portrait; it must not overlay the person.
+- Supporting text: thin, visible, and when possible lightly curved along the portrait outline.
+- If the user provides a subtitle, the subtitle must appear clearly. Do not hide it as tiny edge microcopy.
 - Background: either a clean low-saturation solid color or the original selfie/photo background.
 - Portrait: always foregrounded with a thick white sticker outline when using the photo background.
 - Template personality comes from foreground details, not a busy base background.
@@ -40,7 +42,7 @@ Use for AI career pivots, founder notes, higher-trust creator posts, and premium
 
 - visual DNA: low-saturation solid background or retained real-photo background, large portrait cutout, thick cream/white outline, 3-5 large title chunks orbiting the person contour
 - palette: deep green, cream, mint, glass blue, pale pink accent
-- title behavior: no colored title backgrounds; use cream or mint-white fill with deep green/charcoal stroke
+- title behavior: no colored title backgrounds; use cream or mint-white fill with deep green/charcoal stroke; keep the main title outside the portrait silhouette
 - best title rhythm: `从硬件 / PhD / 到AI / Engineer`, `科研背景 / 转AI`, `不是重来 / 是升级`
 - avoid: many colors, red/yellow default palette, long subtitles
 
@@ -50,7 +52,7 @@ Inspired by high-energy Xiaohongshu collage covers. Use for tool lists, recommen
 
 - visual DNA: clean solid background, sticker-cut portrait in front, thick outlined headline, diagonal bottom banner, small foreground collage cards or labels
 - palette: espresso or charcoal frame, cream title, amber/mint/coral/blue collage blocks, orange or coral banner
-- title behavior: 2-3 large chunks, heavy black/dark stroke, slight slant for motion
+- title behavior: 2-3 large chunks, heavy black/dark stroke, slight slant for motion; title can overlap banners/cards but not the portrait cutout
 - best title rhythm: `推荐清单`, `这几个工具`, `都藏在这里`
 - avoid: actual watermarked food photos unless the buyer owns them; rebuild collage tiles or use buyer-provided assets
 
@@ -60,7 +62,7 @@ Inspired by scrapbook / child-fashion / lifestyle label covers. Use for structur
 
 - visual DNA: warm low-saturation kraft solid background, optional foreground grid-paper card, tape strips, small labels, large cutout portrait, badge stickers
 - palette: kraft tan, cream, muted blue, deep brown, sage accent
-- title behavior: one strong banner title at top or upper third, small English tag optional
+- title behavior: one strong banner title at top or upper third, small English tag optional; leave portrait clear
 - best title rhythm: `摆脱路人感`, `求职路线图`, `AI学习路线`
 - avoid: overdecorating; keep labels small and readable
 
@@ -70,7 +72,7 @@ Inspired by outdoor season / childlike energy covers. Use for motivation, learni
 
 - visual DNA: muted green solid background or retained outdoor selfie background, oversized title in upper half, hand-drawn white doodles, playful arrows and circles
 - palette: forest green, lemon-lime, white, soft yellow, small charcoal details
-- title behavior: huge title, 1-2 lines only, playful stroke or glow; title should remain readable in feed
+- title behavior: huge title, 1-2 lines only, playful stroke or glow; title should remain readable in feed and avoid the portrait
 - best title rhythm: `十月你好`, `AI学习第7天`, `今天也要继续`
 - avoid: tiny text, too many decorative words, weak contrast over foliage
 
@@ -80,7 +82,7 @@ Inspired by sunny personal-story covers. Use for emotional essays, transformatio
 
 - visual DNA: soft sunlit solid background or retained outdoor selfie background, portrait on one side, elegant oversized title, minimal handwritten arcs or white line accents
 - palette: leaf green, warm sunlight, pale yellow title, white secondary text, muted coral label
-- title behavior: editorial title chunks with airy spacing; optional small hashtag or quote label
+- title behavior: editorial title chunks with airy spacing; optional small hashtag or quote label; title wraps around the portrait rather than sitting on top of it
 - best title rhythm: `允许一切发生`, `爱你已经很好了`, `慢慢变好`
 - avoid: cluttered captions, low-contrast yellow on bright background, adding too many hashtags
 
@@ -89,7 +91,8 @@ Inspired by sunny personal-story covers. Use for emotional essays, transformatio
 Before final delivery, verify:
 
 - title is readable at a small phone-feed size
-- face is not covered by title
+- main title does not cover the face, body, hands, or portrait cutout
+- provided subtitle is visibly present and readable
 - template style is recognizable without copying a watermarked reference
 - Chinese text is deterministic and not hallucinated by the image model
 - the buyer can reuse the same template with a new title/photo

@@ -21,10 +21,10 @@ Upload a selfie, give me your exact title, and choose a template style. I will g
 - clean but lively 3:4 cover specs optimized for Xiaohongshu
 - human-readable Chinese title overlays, not broken AI text
 - large portrait cutout direction with white sticker outline
-- contour title layouts where words wrap around the person instead of sitting in rows
+- contour title layouts where words wrap around the person without covering the portrait
 - premium palette options without loud red/yellow title blocks
 - 5 starter template styles: premium contour, collage sticker, kraft grid labels, outdoor doodle big type, sunlit editorial story
-- detail-rich template rules: sticker edges, grid/paper texture, micro labels, doodle marks, title slant, and foreground overlap
+- detail-rich template rules: sticker edges, grid/paper texture, micro labels, doodle marks, title slant, and clean foreground layering
 - caption hooks, post title options, and hashtags
 - a reusable creator brand kit for future posts
 - QA for face visibility, title readability, thumbnail impact, and platform-native style

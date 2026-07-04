@@ -54,6 +54,8 @@ For final covers, follow `cover-quality-rules.md`: large cutout, thick cream/whi
 - background mode:
 - headline placement:
 - contour placement plan:
+- portrait avoidance plan for main title:
+- subtitle placement:
 - safe margins:
 - color palette:
 
@@ -98,7 +100,8 @@ Hashtags:
 - face is recognizable
 - no broken text inside the image layer
 - Chinese title is readable at thumbnail size
-- title chunks orbit the portrait contour and do not overlap the face awkwardly
+- main title chunks orbit the portrait contour and do not overlap the portrait cutout
+- provided subtitle is visible and readable
 - main title uses one dominant color with strong outline contrast
 - post claim is not misleading
 - covers feel like one creator brand, not random templates
