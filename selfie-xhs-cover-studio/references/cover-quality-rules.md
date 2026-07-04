@@ -26,10 +26,10 @@ If the cover only works when opened full-screen, redesign it.
 
 Use only two base background strategies:
 
-- clean low-saturation solid background, usually cream, sage, muted blue, dusty pink, kraft tan, or soft green
+- clean low-saturation solid background, using one consistent color across the whole canvas, usually cream, sage, muted blue, dusty pink, kraft tan, or soft green
 - retained background from the user's selfie/photo, with the person cut out again in the foreground and a thick white sticker outline
 
-Do not use busy generated backgrounds, generic gradients, large collage/photo tiles, or decorative background patterns as the default base. Template personality should come from foreground details: stickers, labels, doodles, title shape, and portrait layering.
+Do not use busy generated backgrounds, generic gradients, large collage/photo tiles, decorative background patterns, or split color bands as the default solid base. Template personality should come from foreground details: stickers, labels, doodles, title shape, and portrait layering.
 
 ## Title Rules
 
@@ -37,12 +37,13 @@ Do not use busy generated backgrounds, generic gradients, large collage/photo ti
 - Arrange title chunks around the person contour: near head, shoulder, waist, or body edge.
 - Main title chunks must sit in negative space around the portrait. They may hug the outline, but they must not overlay the portrait cutout.
 - If the composition reserves top negative space, keep the main title horizontal and parallel to the cover edges. Use scale, stroke, and font shape for energy instead of tilting the whole headline.
+- If the main title sits in the top safe area, the subtitle usually belongs directly under the main title as part of the same title lockup. Use a shallow smile arc or gentle baseline curve; do not push the subtitle to the edge unless the composition clearly needs it.
 - Do not stack everything in horizontal rows.
 - Do not place important text at the extreme image edges.
 - Use exactly two text roles:
   - main title: bold, large, chunky, feed-readable
   - subtitle/supporting text: thin font, visibly readable, preferably curved lightly along the portrait outline
-- If the user provides a subtitle, it is mandatory: place it clearly, usually as thin curved text just outside the portrait outline or as a small readable line in safe space. Curved subtitle text may follow the white sticker border, but it must not touch the person, overlap the outline, or sit at the extreme cover edge.
+- If the user provides a subtitle, it is mandatory: place it clearly, usually directly under a top headline or as thin curved text just outside the portrait outline. Curved subtitle text may follow the white sticker border, but it must not touch the person, overlap the outline, or sit at the extreme cover edge.
 - Use bright fill colors for all readable text by default. For premium covers, prefer cream, warm white, mint-white, or pale lemon with dark green/charcoal stroke.
 - Make the title playful through font shape, rotation, chunky scale, and contour placement; do not rely on colored word backgrounds for energy.
 - Do not put a colored background block behind every title word by default. Use text shape, stroke, shadow, and placement first.
@@ -111,7 +112,7 @@ When the user does not specify a style, start here:
 - use 4 large title chunks arranged around the person contour
 - add one thin curved subtitle around the portrait outline whenever the user provides a subtitle
 - use one title fill color: cream, warm white, or mint-white
-- use bright subtitle fill as well, usually cream or warm white
+- use bright subtitle fill as well, usually cream or warm white; when the title is at the top, place the subtitle directly under it
 - use deep green or charcoal stroke for title and subtitle
 - add only 1-3 small accents: soft ring, hand-drawn squiggle, or tiny label
 - no colored title background blocks

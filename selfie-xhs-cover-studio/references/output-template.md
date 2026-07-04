@@ -53,10 +53,12 @@ For final covers, follow `cover-quality-rules.md`: large cutout, thick cream/whi
   - subtitle/support text: thin font, lightly curved along portrait outline when possible
 - background mode:
 - headline placement:
+- headline lockup:
 - contour placement plan:
 - portrait avoidance plan for main title:
 - crop plan:
 - subtitle placement:
+- solid background color:
 - safe margins:
 - color palette:
 
@@ -103,8 +105,10 @@ Hashtags:
 - no broken text inside the image layer
 - Chinese title is readable at thumbnail size
 - top title safe space is preserved when requested
+- subtitle sits under a top headline when that is the clearest title lockup
 - main title chunks orbit the portrait contour and do not overlap the portrait cutout
 - provided subtitle is visible and readable
+- solid background uses one consistent color unless a split paper/card template was requested
 - main title uses one dominant color with strong outline contrast
 - post claim is not misleading
 - covers feel like one creator brand, not random templates

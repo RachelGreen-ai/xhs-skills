@@ -65,7 +65,7 @@ If the user does not know the template style, read `references/template-style-li
    - Prefer a large portrait cutout with a thick white sticker outline over a small photo card.
    - For casual selfies where the lower body pulls attention away from the hook, crop the foreground to head and upper body first, then place the cutout lower on the canvas so the top third stays open for the title.
    - If preserving the original photo background, crop or blur it so the original small person does not repeat behind the cutout, then add the foreground person again with a thick white sticker outline.
-   - If not preserving the original photo background, use a clean low-saturation solid color.
+   - If not preserving the original photo background, use one clean low-saturation solid color across the whole canvas. Do not split the solid background into bands unless the user explicitly asks for a paper/card template.
 7. Add text deterministically.
    - Use `scripts/render_cover_pack.py` when producing PNGs from a cover JSON spec.
    - Use HTML/CSS, Playwright, PIL, or another deterministic renderer if adapting the workflow.
@@ -73,7 +73,8 @@ If the user does not know the template style, read `references/template-style-li
    - Place the bold main title in negative space around the portrait; it must not overlay the person.
    - When the user asks for top negative space, keep the main title horizontal and parallel to the cover edges.
    - If the user provides a subtitle, render it clearly. Do not omit it or hide it as tiny edge decoration.
-   - Place the thin subtitle on a slight curve outside the portrait outline when possible. It can follow the white sticker border, but must not touch the person, overlap the outline, or sit at the extreme cover edge.
+   - If the main title sits in the top safe area, place the thin subtitle directly under the main title as part of the same title lockup, preferably with a shallow arc.
+   - Use portrait-outline subtitle placement only when it strengthens the composition. It can follow the white sticker border, but must not touch the person, overlap the outline, or sit at the extreme cover edge.
    - For final covers, prefer contour title placement: short title chunks orbit the person outline instead of sitting in rows.
 8. Package the output.
    - 9 cover files or detailed generation specs
