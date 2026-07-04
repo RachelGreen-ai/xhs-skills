@@ -1,37 +1,38 @@
 # Selfie XHS Cover Studio
 
-Turn one selfie into a polished Xiaohongshu / RedNote cover pack with strong Chinese typography, creator positioning, and ready-to-post captions.
+Turn one selfie into a lively Xiaohongshu / RedNote cover pack for AI learning, job search, creator tools, and build-in-public content.
 
 ## Default Prompt
 
-Upload a selfie and tell me your post topic. I will create 9 Xiaohongshu cover directions with polished portrait styling, accurate Chinese text overlay, caption hooks, and reusable visual rules for your account.
+Upload a selfie and tell me your post topic. I will create 9 Xiaohongshu cover directions with bold outlined Chinese text, sticker-style layouts, caption hooks, and reusable visual rules for your account.
 
 ## Best For
 
-- creators who want a more premium personal brand
-- coaches, consultants, realtors, lawyers, fitness trainers, and beauty providers
-- founders and operators building a China-facing audience
-- anyone posting educational, story-driven, or expertise content on Xiaohongshu
+- AI learners documenting tools, prompts, workflows, and study notes
+- job seekers posting resume, interview, LinkedIn, and career content
+- Capafy skill creators promoting their skills with visual posts
+- founders and operators building in public for a China-facing audience
+- creators who need covers that feel native to Xiaohongshu, not generic AI art
 
 ## What You Get
 
 - 9 cover directions: 3 styles x 3 high-click angles
-- clean 3:4 cover specs optimized for Xiaohongshu
+- lively 3:4 cover specs optimized for Xiaohongshu
 - human-readable Chinese title overlays, not broken AI text
 - caption hooks, post title options, and hashtags
 - a reusable creator brand kit for future posts
-- QA for face visibility, title readability, and thumbnail impact
+- QA for face visibility, title readability, thumbnail impact, and platform-native style
 
 ## Why It Sells
 
-Most AI cover tools make either pretty images with broken Chinese text, or text cards with no personal presence. This skill combines both: your real face, a premium visual system, and deterministic Chinese typography.
+Most AI cover tools make either pretty images with broken Chinese text, or flat text cards with no personal presence. This skill combines your real face, Xiaohongshu-style visual energy, and deterministic Chinese typography.
 
 ## Example Use Cases
 
-- "Make my selfie into 9 covers for a post about quitting my job to freelance."
-- "Create a polished expert-style RedNote cover pack for my divorce finance content."
-- "Turn this portrait into covers for a luxury real estate advice post."
-- "Make 3 styles for my AI tools account: clean, bold, and personal-story."
+- "Make my selfie into 9 covers for a post about how I learned AI from zero."
+- "Create covers for my job search post: why my resume got no interviews."
+- "Make a launch post cover pack for my first Capafy skill."
+- "Turn this portrait into AI tool review covers with a lively Xiaohongshu style."
 
 ## Suggested Pricing
 
@@ -41,4 +42,4 @@ Most AI cover tools make either pretty images with broken Chinese text, or text 
 
 ## Delivery Promise
 
-Upload one photo and one topic. Get a cover pack that looks like it belongs to a serious creator, not a generic template.
+Upload one photo and one topic. Get a cover pack that feels native to Xiaohongshu: bold, readable, energetic, and ready to post.

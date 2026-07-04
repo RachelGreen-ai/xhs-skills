@@ -17,6 +17,13 @@ Create a ready-to-post Xiaohongshu cover pack from one selfie or portrait:
 
 Sell the finished creator asset pack, not the AI tooling.
 
+Primary commercial niches:
+
+- AI learning notes and tool tutorials
+- job search, resume, interview, LinkedIn, and career content
+- Capafy skill launches and build-in-public posts
+- creator workflows, productivity systems, and side-project experiments
+
 ## Ask For
 
 Ask only for missing essentials:
@@ -78,7 +85,7 @@ Use the script when a deterministic text layer is needed:
 
 ```bash
 python3 selfie-xhs-cover-studio/scripts/render_cover_pack.py \
-  --spec examples/selfie-xhs-cover-studio/divorce-finance-cover-spec.json \
+  --spec examples/selfie-xhs-cover-studio/ai-career-cover-spec.json \
   --out out/selfie-xhs-cover-studio
 ```
 
@@ -88,6 +95,7 @@ The script accepts a JSON spec with `canvas`, optional `base_image`, and `varian
 
 - Covers must work at phone thumbnail size.
 - Chinese text must be real text rendered by a deterministic layer, not hallucinated inside the generated image.
+- Use Xiaohongshu-native visual language: bold outlined headlines, stickers, tape, doodles, bright blocks, large portrait cutouts, and information-rich layouts.
 - Face identity should remain stable. Do not beautify so aggressively that the person becomes unrecognizable.
 - Do not create misleading before/after claims, fake credentials, medical claims, legal claims, financial claims, or platform performance guarantees.
 - Prefer a cohesive set over 9 unrelated images.

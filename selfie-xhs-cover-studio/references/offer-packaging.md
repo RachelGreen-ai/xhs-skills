@@ -4,15 +4,15 @@
 
 Do not sell this as "AI image generation." Sell it as a creator asset pack:
 
-"Upload one selfie and one topic. Get 9 Xiaohongshu-ready covers with accurate Chinese typography, creator positioning, captions, and reusable visual rules."
+"Upload one selfie and one AI, job-search, or creator-tool topic. Get 9 Xiaohongshu-ready covers with accurate Chinese typography, lively platform-native layouts, captions, and reusable visual rules."
 
 ## Buyer Pain
 
-- "My covers look amateur."
+- "My AI/tool/job-search posts look amateur."
 - "AI keeps producing broken Chinese text."
 - "I do not know which visual style fits my account."
 - "I spend too long making covers for each post."
-- "I need my face to look like me, just more polished."
+- "I need my face to look like me, but the cover still needs Xiaohongshu energy."
 
 ## Differentiators
 
@@ -22,6 +22,7 @@ Do not sell this as "AI image generation." Sell it as a creator asset pack:
 - title and caption pack included
 - reusable brand rules for future posts
 - PNG render script for contact sheets and crisp text
+- built-in demo niches: AI learning, job search, Capafy skill launch, tool reviews
 
 ## Price Ladder
 
@@ -47,10 +48,10 @@ Creator Pack, US$99:
 ## Demo Script
 
 1. Show the original selfie.
-2. Show the 9-cover contact sheet.
-3. Zoom into one cover and point out readable Chinese text.
-4. Show the caption pack.
-5. Show the reusable brand rules.
+2. Show the 9-cover AI/career contact sheet.
+3. Zoom into one cover and point out the outlined Chinese title and sticker-style layout.
+4. Show the caption hooks for AI learning, job search, or skill launch content.
+5. Show the reusable visual rules.
 
 ## Upsells
 
@@ -59,3 +60,4 @@ Creator Pack, US$99:
 - industry-specific cover templates
 - post idea mining from the buyer's notes or website
 - short-video opening frame variants
+- Capafy skill launch post pack

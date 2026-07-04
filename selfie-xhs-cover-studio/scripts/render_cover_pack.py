@@ -102,6 +102,13 @@ def make_gradient(size: tuple[int, int], top: str, bottom: str) -> Image.Image:
     return image
 
 
+def blend(color: str, target: str, amount: float) -> str:
+    src = hex_to_rgb(color)
+    dst = hex_to_rgb(target)
+    mixed = tuple(round(src[i] * (1 - amount) + dst[i] * amount) for i in range(3))
+    return "#%02x%02x%02x" % mixed
+
+
 def cover_background(spec: dict[str, Any], width: int, height: int, root: Path) -> Image.Image:
     base_image = spec.get("base_image")
     if base_image:
@@ -124,8 +131,136 @@ def cover_background(spec: dict[str, Any], width: int, height: int, root: Path) 
     )
 
 
+def draw_background_pattern(draw: ImageDraw.ImageDraw, width: int, height: int, variant: dict[str, Any]) -> None:
+    palette = variant.get("palette", {})
+    pattern = variant.get("pattern", "none")
+    accent = palette.get("accent", "#ff4d6d")
+    paper = palette.get("paper_line", blend(palette.get("background_bottom", "#f4e5d4"), "#ffffff", 0.35))
+
+    if pattern == "grid":
+        step = int(variant.get("grid_step", 54))
+        for x in range(0, width, step):
+            draw.line((x, 0, x, height), fill=paper, width=2)
+        for y in range(0, height, step):
+            draw.line((0, y, width, y), fill=paper, width=2)
+    elif pattern == "dots":
+        step = int(variant.get("dot_step", 82))
+        for x in range(20, width, step):
+            for y in range(20, height, step):
+                draw.ellipse((x, y, x + 8, y + 8), fill=paper)
+    elif pattern == "diagonal":
+        stripe = blend(accent, "#ffffff", 0.64)
+        for offset in range(-height, width, 150):
+            draw.polygon(
+                [(offset, height), (offset + 54, height), (offset + height + 54, 0), (offset + height, 0)],
+                fill=stripe,
+            )
+
+
 def draw_panel(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], fill: str, outline: str | None = None) -> None:
     draw.rounded_rectangle(box, radius=34, fill=fill, outline=outline, width=3 if outline else 1)
+
+
+def draw_tape(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], fill: str) -> None:
+    x1, y1, x2, y2 = box
+    draw.polygon(
+        [
+            (x1 + 18, y1),
+            (x2, y1 + 6),
+            (x2 - 18, y2),
+            (x1, y2 - 6),
+        ],
+        fill=fill,
+    )
+    for x in range(x1 + 24, x2 - 18, 34):
+        draw.line((x, y1 + 8, x + 12, y2 - 8), fill=blend(fill, "#000000", 0.18), width=2)
+
+
+def draw_burst(draw: ImageDraw.ImageDraw, center: tuple[int, int], radius: int, fill: str) -> None:
+    cx, cy = center
+    points = []
+    for i in range(18):
+        angle = math.pi * 2 * i / 18
+        r = radius if i % 2 == 0 else int(radius * 0.48)
+        points.append((cx + int(math.cos(angle) * r), cy + int(math.sin(angle) * r)))
+    draw.polygon(points, fill=fill)
+
+
+def draw_decorations(draw: ImageDraw.ImageDraw, width: int, height: int, variant: dict[str, Any]) -> None:
+    palette = variant.get("palette", {})
+    accent = palette.get("accent", "#ff4d6d")
+    accent2 = palette.get("accent2", "#ffe84a")
+    ink = palette.get("doodle", "#ffffff")
+    decorations = set(variant.get("decorations", []))
+
+    if "burst" in decorations:
+        draw_burst(draw, (118, 126), 72, accent2)
+        draw_burst(draw, (width - 118, height - 168), 54, accent)
+    if "rings" in decorations:
+        for box in [(54, 1040, 126, 1112), (width - 160, 260, width - 90, 330), (width - 210, height - 250, width - 150, height - 190)]:
+            draw.ellipse(box, outline=ink, width=8)
+    if "squiggle" in decorations:
+        points = [(90, 430), (150, 390), (210, 440), (270, 402), (330, 448)]
+        draw.line(points, fill=accent, width=13, joint="curve")
+        points2 = [(width - 310, 1000), (width - 250, 930), (width - 190, 1005), (width - 130, 940)]
+        draw.line(points2, fill=accent2, width=13, joint="curve")
+    if "paperclip" in decorations:
+        draw.arc((78, 250, 170, 370), 100, 430, fill=ink, width=8)
+        draw.arc((100, 270, 150, 342), 100, 430, fill=ink, width=6)
+    if "corner-dots" in decorations:
+        for i in range(6):
+            draw.ellipse((width - 46, 120 + i * 40, width - 26, 140 + i * 40), fill=ink)
+
+
+def draw_mock_portrait(draw: ImageDraw.ImageDraw, width: int, height: int, variant: dict[str, Any]) -> None:
+    palette = variant.get("palette", {})
+    pose = variant.get("portrait_pose", "right")
+    scale = float(variant.get("portrait_scale", 1.0))
+    outline = palette.get("portrait_outline", "#ffffff")
+    block = palette.get("portrait_block", "#d9d2c5")
+    face = palette.get("portrait_face", "#f1d3ba")
+    hair = palette.get("portrait_hair", "#202020")
+    body = palette.get("portrait_body", "#2c313a")
+    shadow = palette.get("portrait_shadow", "#00000028")
+
+    if pose == "center":
+        cx = width // 2
+        top = int(height * 0.28)
+    elif pose == "left":
+        cx = int(width * 0.34)
+        top = int(height * 0.26)
+    else:
+        cx = int(width * 0.68)
+        top = int(height * 0.23)
+
+    head_r = int(120 * scale)
+    body_w = int(360 * scale)
+    body_h = int(520 * scale)
+    stroke = int(34 * scale)
+
+    draw.rounded_rectangle(
+        (cx - body_w // 2 - stroke + 18, top + head_r + 90, cx + body_w // 2 + stroke + 18, top + head_r + body_h + 90),
+        radius=int(140 * scale),
+        fill=shadow,
+    )
+    draw.rounded_rectangle(
+        (cx - body_w // 2 - stroke, top + head_r + 70, cx + body_w // 2 + stroke, top + head_r + body_h + 70),
+        radius=int(150 * scale),
+        fill=outline,
+    )
+    draw.ellipse((cx - head_r - stroke, top - stroke, cx + head_r + stroke, top + head_r * 2 + stroke), fill=outline)
+    draw.ellipse((cx - head_r - 28, top - 22, cx + head_r + 28, top + head_r * 2 + 40), fill=hair)
+    draw.ellipse((cx - head_r, top, cx + head_r, top + head_r * 2), fill=face)
+    draw.rounded_rectangle(
+        (cx - body_w // 2, top + head_r + 100, cx + body_w // 2, top + head_r + body_h + 70),
+        radius=int(120 * scale),
+        fill=body,
+    )
+    draw.rounded_rectangle(
+        (cx - body_w // 2, top + head_r + 100, cx + body_w // 2, top + head_r + 250),
+        radius=int(80 * scale),
+        fill=block,
+    )
 
 
 def draw_multiline(
@@ -136,11 +271,13 @@ def draw_multiline(
     fill: str,
     max_width: int,
     line_gap: int,
+    stroke_width: int = 0,
+    stroke_fill: str = "#000000",
 ) -> int:
     x, y = xy
     lines = wrap_text(draw, text, face, max_width)
     for line in lines:
-        draw.text((x, y), line, font=face, fill=fill)
+        draw.text((x, y), line, font=face, fill=fill, stroke_width=stroke_width, stroke_fill=stroke_fill)
         bbox = draw.textbbox((x, y), line, font=face)
         y = bbox[3] + line_gap
     return y
@@ -152,6 +289,7 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
     palette = variant.get("palette", {})
     image = cover_background(variant, width, height, root).convert("RGBA")
     draw = ImageDraw.Draw(image)
+    draw_background_pattern(draw, width, height, variant)
 
     margin = int(variant.get("margin", 76))
     text_color = palette.get("text", "#141414")
@@ -159,16 +297,12 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
     panel = palette.get("panel", "#fffffff0")
     muted = palette.get("muted", "#5f5f5f")
     layout = variant.get("layout", "bottom_panel")
+    panel_style = variant.get("panel_style", "card")
+    draw_decorations(draw, width, height, variant)
 
     # Add a deterministic visual anchor when no base image exists.
     if not variant.get("base_image"):
-        draw.rounded_rectangle(
-            (width - 470, 170, width - 86, 750),
-            radius=180,
-            fill=palette.get("portrait_block", "#d9d2c5"),
-        )
-        draw.ellipse((width - 350, 245, width - 190, 405), fill=palette.get("portrait_face", "#f1d3ba"))
-        draw.rounded_rectangle((width - 395, 425, width - 145, 740), radius=90, fill=palette.get("portrait_body", "#2c313a"))
+        draw_mock_portrait(draw, width, height, variant)
 
     if layout == "top_title":
         panel_box = (margin, margin, width - margin, 520)
@@ -179,7 +313,17 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
     else:
         panel_box = (margin, height - 610, width - margin, height - margin)
 
-    draw_panel(draw, panel_box, panel, palette.get("panel_outline"))
+    if panel_style == "slant_banner":
+        x1, y1, x2, y2 = panel_box
+        draw.polygon([(x1 - 24, y1 + 26), (x2, y1 - 18), (x2 + 24, y2 - 26), (x1, y2 + 18)], fill=palette.get("panel_shadow", "#000000"))
+        draw.polygon([(x1 - 34, y1), (x2, y1 - 44), (x2 + 34, y2), (x1, y2 + 44)], fill=panel)
+    elif panel_style == "tape":
+        draw_tape(draw, (panel_box[0], panel_box[1], panel_box[2], panel_box[1] + 96), palette.get("tape", "#ffd166"))
+        draw_panel(draw, panel_box, panel, palette.get("panel_outline"))
+    elif panel_style == "none":
+        pass
+    else:
+        draw_panel(draw, panel_box, panel, palette.get("panel_outline"))
 
     x = panel_box[0] + 46
     y = panel_box[1] + 42
@@ -189,13 +333,26 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
     if badge:
         badge_font = font(34)
         badge_w = int(text_width(draw, badge, badge_font)) + 42
-        draw.rounded_rectangle((x, y, x + badge_w, y + 56), radius=28, fill=accent)
+        if variant.get("badge_style") == "burst":
+            draw_burst(draw, (x + badge_w // 2, y + 30), max(42, badge_w // 2), accent)
+        else:
+            draw.rounded_rectangle((x, y, x + badge_w, y + 56), radius=28, fill=accent)
         draw.text((x + 21, y + 9), badge, font=badge_font, fill=palette.get("badge_text", "#ffffff"))
         y += 82
 
     title = str(variant.get("title", "封面标题"))
-    title_face = fit_font(draw, title, max_width, int(variant.get("title_size", 106)), 58)
-    y = draw_multiline(draw, title, (x, y), title_face, text_color, max_width, 14)
+    title_face = fit_font(draw, title, max_width, int(variant.get("title_size", 124)), 58)
+    y = draw_multiline(
+        draw,
+        title,
+        (x, y),
+        title_face,
+        text_color,
+        max_width,
+        int(variant.get("title_gap", 14)),
+        stroke_width=int(variant.get("title_stroke_width", 0)),
+        stroke_fill=palette.get("title_stroke", "#000000"),
+    )
 
     subtitle = variant.get("subtitle")
     if subtitle:

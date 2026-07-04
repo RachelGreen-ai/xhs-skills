@@ -2,72 +2,72 @@
 
 Use these for marketplace screenshots, sales conversations, and first examples.
 
-## Demo 1: Divorce Finance Creator
+## Demo 1: AI Learning Creator
 
 Input:
 
-- selfie: professional portrait
-- niche: California divorce finance education
-- topic: "What to organize before your first attorney call"
-- audience: women preparing for divorce in California
+- selfie: bright casual portrait
+- niche: AI learning and tool tutorials
+- topic: "How I learned AI from zero in 7 days"
+- audience: students, operators, and creators who feel behind on AI
 
 Recommended styles:
 
-- Clean Expert
-- Premium Service
+- Pop Tutorial
+- Fresh Study Card
 - Bold Viral
 
 Example titles:
 
-- 离婚前先整理这5样
-- 别空手去见律师
-- 房子和RSU先这样查
+- 零基础学AI
+- AI学习先看这8个工具
+- 我用AI做了3个小产品
 
 Why it sells:
 
-This connects a strong visual demo to a high-trust consulting niche.
+AI learning is a strong Capafy-adjacent niche: the buyer already uses agents, tools, prompts, and workflows, and needs visual content to explain them.
 
-## Demo 2: AI Tools Founder
+## Demo 2: Job Search Creator
 
 Input:
 
-- selfie: casual founder photo
-- niche: AI productivity
-- topic: "My 7-agent workflow for finding leads"
-- audience: solo founders and agencies
+- selfie: casual portrait
+- niche: resume, interview, and LinkedIn content
+- topic: "Why my resume got no interviews"
+- audience: job seekers, students, new grads, and career switchers
 
 Recommended styles:
 
-- Clean Expert
-- Data Proof
+- Notebook Job Hunt
+- Campus Career
 - Bold Viral
 
 Example titles:
 
-- 我用7个AI找客户
-- 别再手动找leads了
-- 这个流程省了我6小时
+- 简历别这样写
+- 投100份没面试？
+- LinkedIn这样改更像真人
 
-## Demo 3: Real Estate Advisor
+## Demo 3: Capafy Skill Creator
 
 Input:
 
-- selfie: polished business portrait
-- niche: Bay Area real estate education
-- topic: "Questions to ask before buying with a partner"
-- audience: young couples and first-time buyers
+- selfie: founder or creator portrait
+- niche: build-in-public and AI skill monetization
+- topic: "Launching my first Capafy skill"
+- audience: AI builders, creators, and operators who want to sell skills
 
 Recommended styles:
 
-- Premium Service
-- Clean Expert
-- Soft Lifestyle
+- Creator Skill Launch
+- Template Maker
+- AI Side Hustle
 
 Example titles:
 
-- 买房前先问清楚
-- 情侣买房最怕这件事
-- 别只看首付
+- 我的第一个AI Skill
+- 一键生成小红书封面
+- Capafy上架复盘
 
 ## Demo Contact Sheet Requirements
 
