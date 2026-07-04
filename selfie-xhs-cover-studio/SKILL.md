@@ -98,9 +98,10 @@ The script accepts a JSON spec with `canvas`, optional `base_image`, and `varian
 
 - Covers must work at phone thumbnail size.
 - Chinese text must be real text rendered by a deterministic layer, not hallucinated inside the generated image.
-- Use Xiaohongshu-native visual language: bold outlined headlines, stickers, tape, doodles, bright blocks, large portrait cutouts, and information-rich layouts.
+- Use Xiaohongshu-native visual language: bold outlined headlines, large portrait cutouts, contour title stickers, light doodles, and information-rich layouts. Use bright blocks only for explicitly loud/pop variants.
 - Main title color should usually be unified across chunks; use black and white outlines for contrast instead of making every word a different color.
 - Use 3-5 large title chunks around the portrait contour. Avoid long sentence subtitles and one-line-one-row layouts.
+- Do not add colored background blocks behind title chunks by default. Use clean strokes, shadows, and restrained accents unless the user explicitly wants a loud pop style.
 - Prefer the bundled ZCOOL KuaiLe font for playful Chinese title stickers. If using another font, verify it supports every Chinese character before rendering.
 - Face identity should remain stable. Do not beautify so aggressively that the person becomes unrecognizable.
 - Do not create misleading before/after claims, fake credentials, medical claims, legal claims, financial claims, or platform performance guarantees.

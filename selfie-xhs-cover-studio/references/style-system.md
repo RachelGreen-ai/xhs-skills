@@ -7,9 +7,33 @@ Choose styles by buyer niche and post intent. Do not use all styles at once.
 Use for AI learning notes, tool tutorials, prompt workflows, and beginner guides.
 
 - visual: large portrait cutout, high-saturation background, doodle accents, contour title stickers
-- colors: yellow, pink, cyan, black, white
-- typography: huge outlined title chunks orbiting the person contour; unified title color; playful CJK font such as bundled ZCOOL KuaiLe
+- colors: for premium tutorials use deep green, cream, mint, glass blue, and pale pink; use louder yellow/pink only when the user asks for a pop/variety-show style
+- typography: huge outlined title chunks orbiting the person contour; no title background blocks by default; playful CJK font such as bundled ZCOOL KuaiLe
 - title rhythm: "零基础学AI", "先看这8个工具", "7天搭好路线"
+
+## Premium Clean Contour
+
+Use for personal transformation stories, AI career pivots, founder notes, and higher-trust creator posts.
+
+- visual: retained real-photo background, large portrait cutout, thick cream/white outline, title chunks following the person contour
+- colors: deep green, charcoal, cream, mint, glass blue, pale pink accent
+- typography: cream or mint-white title, dark green/charcoal stroke, no colored title blocks
+- title rhythm: "从硬件 / PhD / 到AI / Engineer", "科研背景 / 转AI", "不是重来 / 是升级"
+
+## Premium Palette System
+
+Use these palettes before reaching for red/yellow.
+
+- Herbarium Tech: deep green `#173d35`, cream `#fff7e5`, soft mint `#cfe6df`, glass green `#7ec4b1`, pale pink accent `#e7bfd0`
+- Glass Study: ink `#20303a`, warm white `#fffaf0`, glass blue `#d9eef2`, mint `#bfe5d3`, muted coral accent `#df9ca7`
+- Career Soft Power: charcoal `#1f2930`, milk tea `#f6efe4`, sage `#b8cdbd`, powder blue `#c7dff0`, dusty rose accent `#d8a7b7`
+
+Palette discipline:
+
+- The main title uses one fill color across all chunks.
+- Contrast comes from dark strokes, cream outer glow, scale, and placement, not many fill colors.
+- Avoid red/yellow as a pair unless the user explicitly requests loud discount, warning, or variety-show energy.
+- Avoid solid background rectangles behind title chunks. If a word needs help, use stroke, shadow, or a soft outer glow first.
 
 ## Notebook Job Hunt
 
@@ -113,7 +137,7 @@ Use for SaaS, AI tools, productivity, analytics, investment journaling, and case
 ## Selection Rules
 
 - Pick one trust-building style, one emotional style, and one high-click style.
-- For AI learning, default to Pop Tutorial, Fresh Study Card, and Bold Viral.
+- For AI learning, default to Premium Clean Contour, Pop Tutorial, and Fresh Study Card.
 - For job search, default to Notebook Job Hunt, Campus Career, and Bold Viral.
 - For Capafy skill creators, default to Creator Skill Launch, AI Side Hustle, and Template Maker.
 - For creators, default to Soft Lifestyle, Cute Creator, and Bold Viral.
@@ -124,9 +148,11 @@ Use for SaaS, AI tools, productivity, analytics, investment journaling, and case
 - 3:4 canvas, recommended 1242 x 1656.
 - Make the face or person visually large; small portraits feel less native on XHS.
 - Put title chunks near the portrait contour; the words should feel like stickers orbiting the person.
+- Use `layout: "contour"` in renderer specs when the title should wrap around the portrait instead of living in a panel.
 - Reserve 25-40 percent of the canvas for title text, but do not push key words to extreme edges.
 - Use no more than 12 Chinese characters in the main headline when possible.
 - Use strong contrast behind text, especially when retaining the original photo background.
 - Use outlined titles, badges, tape, sticker shapes, or doodles when the post is educational or career-focused.
 - Use one dominant title color per cover. Prefer contrast from strokes and sticker outlines, not many title colors.
+- Do not add colored background blocks behind title chunks unless the chosen style is explicitly loud/pop.
 - Keep small labels optional; never let them compete with the title.

@@ -27,7 +27,10 @@ If the cover only works when opened full-screen, redesign it.
 - Arrange title chunks around the person contour: near head, shoulder, waist, or body edge.
 - Do not stack everything in horizontal rows.
 - Do not place important text at the extreme image edges.
-- Use one unified title color per cover. For example: all title chunks in bright yellow with black and white outlines.
+- Use one unified title color per cover. For premium covers, prefer cream, warm white, mint-white, or pale lemon with dark green/charcoal stroke.
+- Make the title playful through font shape, rotation, chunky scale, and contour placement; do not rely on colored word backgrounds for energy.
+- Do not put a colored background block behind every title word by default. Use text shape, stroke, shadow, and placement first.
+- Reserve colored background blocks for deliberately loud pop/variety-show styles only.
 - Use bright contrast when the photo background is retained.
 - Chinese text must be rendered deterministically with a CJK-capable font.
 - Do not use decorative Latin fonts for Chinese; unsupported glyphs become boxes.
@@ -48,8 +51,11 @@ Keep these chunks visually close to the cutout outline. They should feel like st
 ## Color Rules
 
 - Use one dominant title color.
-- Use black stroke for readability.
-- Add a white outside stroke when text sits on a photo background.
+- For clean premium covers, use restrained palettes such as deep green, charcoal, cream, mint, glass blue, and pale pink.
+- A good default is cream or mint-white title text with deep green/charcoal stroke.
+- Use red/yellow only when the requested style is explicitly loud, variety-show, or sale/discount oriented.
+- Use dark green or charcoal stroke for readability.
+- Add a cream or white outside stroke when text sits on a photo background.
 - Use accent shapes for energy, but do not give every word a different color.
 - Keep small badges secondary and do not let them compete with the title.
 
@@ -59,7 +65,22 @@ Keep these chunks visually close to the cutout outline. They should feel like st
 - long subtitles
 - one-line-one-row PPT layouts
 - many unrelated colors in title text
+- default red/yellow color palettes
+- title background blocks behind every word
 - dense captions at the bottom
 - small text that only works full-screen
 - repeated person from the retained background
 - random decorative text that does not help the hook
+
+## Default Premium Recipe
+
+When the user does not specify a style, start here:
+
+- retain useful real-photo background context
+- add one large portrait cutout with cream/white outline
+- use 4 large title chunks arranged around the person contour
+- use one title fill color: cream, warm white, or mint-white
+- use deep green or charcoal stroke
+- add only 1-3 small accents: soft ring, hand-drawn squiggle, or tiny label
+- no colored title background blocks
+- no red/yellow default palette

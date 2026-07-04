@@ -284,6 +284,76 @@ def draw_multiline(
     return y
 
 
+def resolve_position(value: float | int, total: int) -> int:
+    if isinstance(value, float) and 0 <= value <= 1:
+        return int(value * total)
+    return int(value)
+
+
+def draw_rotated_text(
+    image: Image.Image,
+    text: str,
+    center: tuple[int, int],
+    face: ImageFont.ImageFont,
+    fill: str,
+    stroke_width: int,
+    stroke_fill: str,
+    angle: float = 0,
+) -> None:
+    padding = max(24, stroke_width * 4)
+    measure = Image.new("RGBA", (10, 10), "#00000000")
+    measure_draw = ImageDraw.Draw(measure)
+    bbox = measure_draw.textbbox((0, 0), text, font=face, stroke_width=stroke_width)
+    text_w = bbox[2] - bbox[0]
+    text_h = bbox[3] - bbox[1]
+    layer = Image.new("RGBA", (text_w + padding * 2, text_h + padding * 2), "#00000000")
+    layer_draw = ImageDraw.Draw(layer)
+    layer_draw.text(
+        (padding - bbox[0], padding - bbox[1]),
+        text,
+        font=face,
+        fill=fill,
+        stroke_width=stroke_width,
+        stroke_fill=stroke_fill,
+    )
+    if angle:
+        layer = layer.rotate(angle, resample=Image.Resampling.BICUBIC, expand=True)
+    x = center[0] - layer.width // 2
+    y = center[1] - layer.height // 2
+    image.alpha_composite(layer, (x, y))
+
+
+def draw_contour_chunks(image: Image.Image, variant: dict[str, Any], width: int, height: int) -> bool:
+    chunks = variant.get("contour_chunks", [])
+    if not chunks:
+        return False
+
+    palette = variant.get("palette", {})
+    fill = palette.get("text", "#fff7e5")
+    stroke_fill = palette.get("title_stroke", "#173d35")
+    default_size = int(variant.get("title_size", 128))
+    default_stroke = int(variant.get("title_stroke_width", 8))
+
+    for chunk in chunks:
+        chunk_text = str(chunk.get("text", "")).strip()
+        if not chunk_text:
+            continue
+        chunk_face = font(int(chunk.get("size", default_size)))
+        x = resolve_position(chunk.get("x", 0.5), width)
+        y = resolve_position(chunk.get("y", 0.5), height)
+        draw_rotated_text(
+            image,
+            chunk_text,
+            (x, y),
+            chunk_face,
+            chunk.get("fill", fill),
+            int(chunk.get("stroke_width", default_stroke)),
+            chunk.get("stroke_fill", stroke_fill),
+            float(chunk.get("angle", 0)),
+        )
+    return True
+
+
 def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) -> Image.Image:
     width = int(canvas.get("width", DEFAULT_CANVAS["width"]))
     height = int(canvas.get("height", DEFAULT_CANVAS["height"]))
@@ -304,6 +374,18 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
     # Add a deterministic visual anchor when no base image exists.
     if not variant.get("base_image"):
         draw_mock_portrait(draw, width, height, variant)
+
+    if layout == "contour":
+        draw_contour_chunks(image, variant, width, height)
+        badge = variant.get("badge")
+        if badge:
+            badge_font = font(int(variant.get("badge_size", 36)))
+            draw.text((margin, margin), badge, font=badge_font, fill=palette.get("muted", "#5f5f5f"))
+        kicker = variant.get("kicker")
+        if kicker:
+            small = font(30)
+            draw.text((margin, height - 52), kicker, font=small, fill=muted)
+        return image.convert("RGB")
 
     if layout == "top_title":
         panel_box = (margin, margin, width - margin, 520)
