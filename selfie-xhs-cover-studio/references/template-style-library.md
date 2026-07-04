@@ -30,7 +30,8 @@ All templates share the same foundation:
 
 - Typography: exactly two roles, bold big main title and thin supporting text.
 - Main title: bold, large, and placed in negative space around the portrait; it must not overlay the person.
-- Supporting text: thin, visible, and when possible lightly curved along the portrait outline.
+- Supporting text: thin, visible, bright-colored, and when possible lightly curved along the portrait outline.
+- Text color: use bright fill colors by default for both title and subtitle, usually cream, warm white, mint-white, or pale lemon. Use dark green/charcoal stroke for readability.
 - If the user provides a subtitle, the subtitle must appear clearly. Do not hide it as tiny edge microcopy.
 - Background: either a clean low-saturation solid color or the original selfie/photo background.
 - Portrait: always foregrounded with a thick white sticker outline when using the photo background.

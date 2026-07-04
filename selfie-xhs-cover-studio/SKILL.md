@@ -124,6 +124,7 @@ python3 selfie-xhs-cover-studio/scripts/render_cover_pack.py \
 - Covers must work at phone thumbnail size.
 - Chinese text must be real text rendered by a deterministic layer, not hallucinated inside the generated image.
 - Use only two text roles: bold big main title and thin subtitle/supporting text.
+- Use bright fill colors for all readable text by default, with dark strokes/shadows for contrast.
 - Main title must not overlay the portrait cutout; subtitle must be present when provided.
 - Use only two base background modes: clean low-saturation solid color, or retained selfie background with thick white portrait outline.
 - Details sell the image: preserve small labels, edge texture, paper/grid/doodle treatments, portrait sticker edges, type angle, and layer depth when applying a template.

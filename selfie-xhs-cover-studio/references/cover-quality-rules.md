@@ -41,7 +41,7 @@ Do not use busy generated backgrounds, generic gradients, large collage/photo ti
   - main title: bold, large, chunky, feed-readable
   - subtitle/supporting text: thin font, visibly readable, preferably curved lightly along the portrait outline
 - If the user provides a subtitle, it is mandatory: place it clearly, usually as thin curved text along the portrait outline or as a small readable line in safe space.
-- Use one unified title color per cover. For premium covers, prefer cream, warm white, mint-white, or pale lemon with dark green/charcoal stroke.
+- Use bright fill colors for all readable text by default. For premium covers, prefer cream, warm white, mint-white, or pale lemon with dark green/charcoal stroke.
 - Make the title playful through font shape, rotation, chunky scale, and contour placement; do not rely on colored word backgrounds for energy.
 - Do not put a colored background block behind every title word by default. Use text shape, stroke, shadow, and placement first.
 - Reserve colored background blocks for deliberately loud pop/variety-show styles only.
@@ -58,7 +58,7 @@ Do not introduce many fonts. Covers should use only:
 - Bold title font: the large headline chunks; use bundled `assets/fonts/ZCOOLKuaiLe-Regular.ttf` or another bold CJK display font.
 - Thin subtitle font: subtitle, curved contour text, small labels, and micro English/Chinese helper text; use a light CJK font such as STHeiti Light, Hiragino, or another thin readable font.
 
-The main title carries impact and must not cover the person. The thin subtitle adds polish and must be visible when provided; it can follow the white portrait outline with a slight arc. Avoid multiple decorative fonts in one cover.
+The main title carries impact and must not cover the person. The thin subtitle adds polish and must be visible when provided; it can follow the white portrait outline with a slight arc. Both title and subtitle should use bright fill colors by default, with dark strokes/shadows for readability. Avoid multiple decorative fonts in one cover.
 
 ## Recommended Contour Title Pattern
 
@@ -90,6 +90,7 @@ Keep these chunks visually close to the cutout outline. They should feel like st
 - main title overlapping the face, body, or portrait cutout
 - missing subtitle when the user provided one
 - many unrelated colors in title text
+- dark main text as the default
 - more than two font roles
 - busy generated backgrounds
 - default red/yellow color palettes
@@ -108,7 +109,8 @@ When the user does not specify a style, start here:
 - use 4 large title chunks arranged around the person contour
 - add one thin curved subtitle around the portrait outline whenever the user provides a subtitle
 - use one title fill color: cream, warm white, or mint-white
-- use deep green or charcoal stroke
+- use bright subtitle fill as well, usually cream or warm white
+- use deep green or charcoal stroke for title and subtitle
 - add only 1-3 small accents: soft ring, hand-drawn squiggle, or tiny label
 - no colored title background blocks
 - no red/yellow default palette
