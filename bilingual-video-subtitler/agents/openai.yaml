@@ -1,0 +1,4 @@
+interface:
+  display_name: "Bilingual Video Subtitler"
+  short_description: "Offline Chinese-English subtitles for videos"
+  default_prompt: "Use $bilingual-video-subtitler to add bilingual Chinese-English subtitles to this video with a selected subtitle style."
