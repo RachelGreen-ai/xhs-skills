@@ -50,9 +50,12 @@ If the user does not know the vibe, choose 3 commercially useful styles from `re
 4. Generate or specify the portrait/background layer.
    - Do not ask the image model to render Chinese text.
    - Keep the face visible, flattering, and recognizable.
+   - Prefer a large portrait cutout with a thick white sticker outline over a small photo card.
+   - If preserving the original photo background, crop or blur it so the original small person does not repeat behind the cutout.
 5. Add text deterministically.
    - Use `scripts/render_cover_pack.py` when producing PNGs from a cover JSON spec.
    - Use HTML/CSS, Playwright, PIL, or another deterministic renderer if adapting the workflow.
+   - For final covers, prefer contour title placement: short title chunks orbit the person outline instead of sitting in rows.
 6. Package the output.
    - 9 cover files or detailed generation specs
    - contact sheet for fast comparison
@@ -96,6 +99,9 @@ The script accepts a JSON spec with `canvas`, optional `base_image`, and `varian
 - Covers must work at phone thumbnail size.
 - Chinese text must be real text rendered by a deterministic layer, not hallucinated inside the generated image.
 - Use Xiaohongshu-native visual language: bold outlined headlines, stickers, tape, doodles, bright blocks, large portrait cutouts, and information-rich layouts.
+- Main title color should usually be unified across chunks; use black and white outlines for contrast instead of making every word a different color.
+- Use 3-5 large title chunks around the portrait contour. Avoid long sentence subtitles and one-line-one-row layouts.
+- Prefer the bundled ZCOOL KuaiLe font for playful Chinese title stickers. If using another font, verify it supports every Chinese character before rendering.
 - Face identity should remain stable. Do not beautify so aggressively that the person becomes unrecognizable.
 - Do not create misleading before/after claims, fake credentials, medical claims, legal claims, financial claims, or platform performance guarantees.
 - Prefer a cohesive set over 9 unrelated images.
@@ -103,6 +109,7 @@ The script accepts a JSON spec with `canvas`, optional `base_image`, and `varian
 ## References
 
 - Read `references/style-system.md` before choosing styles.
+- Read `references/cover-quality-rules.md` before designing or rendering final covers.
 - Read `references/output-template.md` before generating final deliverable text.
 - Read `references/offer-packaging.md` when preparing marketplace listings, pricing, or sales demos.
 - Read `references/demo-cases.md` when creating marketplace screenshots or sample outputs.

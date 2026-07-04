@@ -23,6 +23,7 @@ Do not sell this as "AI image generation." Sell it as a creator asset pack:
 - reusable brand rules for future posts
 - PNG render script for contact sheets and crisp text
 - built-in demo niches: AI learning, job search, Capafy skill launch, tool reviews
+- large cutout covers with title chunks arranged around the person contour
 
 ## Price Ladder
 
@@ -49,7 +50,7 @@ Creator Pack, US$99:
 
 1. Show the original selfie.
 2. Show the 9-cover AI/career contact sheet.
-3. Zoom into one cover and point out the outlined Chinese title and sticker-style layout.
+3. Zoom into one cover and point out the large person cutout, white outline, unified title color, and contour-following text.
 4. Show the caption hooks for AI learning, job search, or skill launch content.
 5. Show the reusable visual rules.
 

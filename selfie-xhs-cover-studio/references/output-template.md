@@ -29,6 +29,8 @@ Create a polished editorial portrait based on the provided selfie. Preserve the 
 
 Add style-specific details after this base prompt. For AI learning, job-search, and creator-tool content, prefer bright platform-native XHS styling: portrait cutout, sticker labels, tape, doodles, grid paper, bold color blocks, and space for outlined Chinese typography.
 
+For final covers, follow `cover-quality-rules.md`: large cutout, thick white person outline, unified title color, and short title chunks placed around the person contour.
+
 ## Text Overlay Spec
 
 - canvas:
@@ -37,6 +39,7 @@ Add style-specific details after this base prompt. For AI learning, job-search, 
 - badge:
 - font direction:
 - headline placement:
+- contour placement plan:
 - safe margins:
 - color palette:
 
@@ -65,6 +68,7 @@ Hashtags:
 - face is recognizable
 - no broken text inside the image layer
 - Chinese title is readable at thumbnail size
-- title does not overlap the face awkwardly
+- title chunks orbit the portrait contour and do not overlap the face awkwardly
+- main title uses one dominant color with strong outline contrast
 - post claim is not misleading
 - covers feel like one creator brand, not random templates

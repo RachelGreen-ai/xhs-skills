@@ -6,9 +6,9 @@ Choose styles by buyer niche and post intent. Do not use all styles at once.
 
 Use for AI learning notes, tool tutorials, prompt workflows, and beginner guides.
 
-- visual: large portrait cutout, high-saturation background, doodle accents
+- visual: large portrait cutout, high-saturation background, doodle accents, contour title stickers
 - colors: yellow, pink, cyan, black, white
-- typography: huge outlined Chinese title, short subtitle, badge sticker
+- typography: huge outlined title chunks orbiting the person contour; unified title color; playful CJK font such as bundled ZCOOL KuaiLe
 - title rhythm: "零基础学AI", "先看这8个工具", "7天搭好路线"
 
 ## Notebook Job Hunt
@@ -44,7 +44,7 @@ Use for build-in-public experiments, tiny products, income tests, and creator wo
 
 - visual: bright gradient, handwritten marks, energetic portrait, bold result-focused title
 - colors: orange, hot pink, yellow, black, white
-- typography: large outlined headline, small proof labels, short subtitle
+- typography: large outlined headline chunks, small proof labels only if readable in feed
 - title rhythm: "我用AI做了3个小产品", "副业实验第1天", "这个流程跑通了"
 
 ## Template Maker
@@ -123,8 +123,10 @@ Use for SaaS, AI tools, productivity, analytics, investment journaling, and case
 
 - 3:4 canvas, recommended 1242 x 1656.
 - Make the face or person visually large; small portraits feel less native on XHS.
-- Reserve 25-40 percent of the canvas for title text.
+- Put title chunks near the portrait contour; the words should feel like stickers orbiting the person.
+- Reserve 25-40 percent of the canvas for title text, but do not push key words to extreme edges.
 - Use no more than 12 Chinese characters in the main headline when possible.
-- Use strong contrast behind text.
+- Use strong contrast behind text, especially when retaining the original photo background.
 - Use outlined titles, badges, tape, sticker shapes, or doodles when the post is educational or career-focused.
+- Use one dominant title color per cover. Prefer contrast from strokes and sticker outlines, not many title colors.
 - Keep small labels optional; never let them compete with the title.

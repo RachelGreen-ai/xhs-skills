@@ -21,6 +21,7 @@ from PIL import Image, ImageDraw, ImageFont
 DEFAULT_CANVAS = {"width": 1242, "height": 1656}
 FONT_CANDIDATES = [
     os.environ.get("XHS_FONT"),
+    str(Path(__file__).resolve().parents[1] / "assets/fonts/ZCOOLKuaiLe-Regular.ttf"),
     "/System/Library/Fonts/Hiragino Sans GB.ttc",
     "/System/Library/Fonts/STHeiti Medium.ttc",
     "/System/Library/Fonts/Supplemental/Songti.ttc",

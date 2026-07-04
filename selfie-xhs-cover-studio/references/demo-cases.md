@@ -75,3 +75,5 @@ Example titles:
 - Use short labels under each cover: style + angle.
 - Include original selfie thumbnail only if the buyer consents.
 - Show one zoomed cover to prove the Chinese text is crisp.
+- Include one feed-size shrink preview for the strongest cover.
+- For selfie-led covers, show that title chunks wrap around the person outline instead of sitting in rows.
