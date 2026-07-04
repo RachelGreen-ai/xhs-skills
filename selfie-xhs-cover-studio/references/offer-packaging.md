@@ -4,7 +4,7 @@
 
 Do not sell this as "AI image generation." Sell it as an editable creator cover kit:
 
-"Upload one selfie, one title, and one subtitle. Get an editable Xiaohongshu cover editor with crisp Chinese typography, a portrait sticker cutout, draggable text/portrait layers, subtitle curve controls, and one-click PNG export."
+"Upload one selfie, one title, and one subtitle. Get an editable Xiaohongshu cover editor with crisp Chinese typography, a portrait sticker cutout, draggable text/portrait layers, subtitle curve and rotation controls, and one-click PNG export."
 
 ## Buyer Pain
 
@@ -21,7 +21,7 @@ Do not sell this as "AI image generation." Sell it as an editable creator cover 
 - deterministic Chinese text overlay
 - interactive HTML editor, not just 1 static image
 - draggable title, subtitle, and portrait layers
-- subtitle curve and font-size controls
+- subtitle curve, rotation, and font-size controls
 - direct PNG export
 - 9 variants available as an upsell pack
 - title and caption pack included

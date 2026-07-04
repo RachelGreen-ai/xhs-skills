@@ -1,6 +1,6 @@
 ---
 name: selfie-xhs-cover-studio
-description: Use this skill when a user wants to turn a selfie, portrait, product photo, or personal-brand topic into an editable Xiaohongshu / RedNote cover. Best for one image plus a title/subtitle, with an interactive HTML editor for dragging the title, subtitle, and portrait, adjusting subtitle curve and font sizes, and exporting a ready-to-post PNG. Also supports static cover packs, template selection, deterministic Chinese text overlays, caption hooks, contact sheets, and reusable creator visual rules.
+description: Use this skill when a user wants to turn a selfie, portrait, product photo, or personal-brand topic into an editable Xiaohongshu / RedNote cover. Best for one image plus a title/subtitle, with an interactive HTML editor for dragging the title, subtitle, and portrait, adjusting subtitle curve, subtitle rotation, and font sizes, and exporting a ready-to-post PNG. Also supports static cover packs, template selection, deterministic Chinese text overlays, caption hooks, contact sheets, and reusable creator visual rules.
 ---
 
 # Selfie XHS Cover Studio
@@ -10,7 +10,7 @@ description: Use this skill when a user wants to turn a selfie, portrait, produc
 Create a ready-to-post Xiaohongshu cover kit from one selfie or portrait:
 
 - editable single-cover generation from one image, one title, and one optional subtitle
-- interactive HTML editor for micro-adjusting title, subtitle, portrait position, subtitle curve, font size, and background mode
+- interactive HTML editor for micro-adjusting title, subtitle, portrait position, subtitle curve, subtitle rotation, font size, and background mode
 - direct PNG export from the editor
 - 9 cover concepts, usually 3 styles x 3 title angles
 - 3:4 cover specs with accurate Chinese typography
@@ -128,7 +128,7 @@ python3 selfie-xhs-cover-studio/scripts/create_interactive_cover.py \
   --output-dir out/my-editable-xhs-cover
 ```
 
-Open `interactive-editor.html`, drag the title/subtitle/portrait, adjust sliders, then click **Export PNG**. The HTML is self-contained: it embeds the generated layer images and title font so it can be moved with fewer broken-path failures.
+Open `interactive-editor.html`, drag the title/subtitle/portrait, adjust sliders including subtitle curve and rotation, then click **Export PNG**. The HTML is self-contained: it embeds the generated layer images and title font so it can be moved with fewer broken-path failures.
 
 Dependencies: Pillow is required. `rembg` is optional but recommended for commercial-quality portrait cutouts; without it, the script still creates an editable HTML kit, but the portrait layer will not be cleanly removed from its background.
 

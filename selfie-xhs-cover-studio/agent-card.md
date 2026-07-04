@@ -4,7 +4,7 @@ Turn one selfie, one title, and one subtitle into an editable Xiaohongshu / RedN
 
 ## Default Prompt
 
-Upload a selfie, give me your exact title and subtitle, and I will generate an interactive Xiaohongshu cover editor. You can drag the main title, subtitle, and portrait, adjust subtitle curve and font sizes, switch between solid/photo backgrounds, then export a ready-to-post PNG.
+Upload a selfie, give me your exact title and subtitle, and I will generate an interactive Xiaohongshu cover editor. You can drag the main title, subtitle, and portrait, adjust subtitle curve, subtitle rotation, and font sizes, switch between solid/photo backgrounds, then export a ready-to-post PNG.
 
 ## Best For
 

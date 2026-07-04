@@ -130,7 +130,15 @@ def draw_text(draw: ImageDraw.ImageDraw, text: str, xy: tuple[int, int], face: I
     draw.text(xy, text, font=face, fill=fill, stroke_width=7, stroke_fill="#173d35")
 
 
-def draw_subtitle_lockup(image: Image.Image, text: str, x: int, y: int, curve: int, size: int) -> None:
+def draw_subtitle_lockup(
+    image: Image.Image,
+    text: str,
+    x: int,
+    y: int,
+    curve: int,
+    size: int,
+    rotation: int,
+) -> None:
     if not text:
         return
     face = load_font(subtitle_font_path(), size)
@@ -164,6 +172,8 @@ def draw_subtitle_lockup(image: Image.Image, text: str, x: int, y: int, curve: i
         rotated = glyph.rotate(angle, expand=True, resample=Image.Resampling.BICUBIC)
         layer.alpha_composite(rotated, (int(cx - rotated.width / 2), int(cy - rotated.height / 2)))
         cursor += width + spacing
+    if rotation:
+        layer = layer.rotate(rotation, resample=Image.Resampling.BICUBIC, center=(x, y))
     image.alpha_composite(layer)
 
 
@@ -185,6 +195,7 @@ def draw_preview(background: Image.Image, sticker: Image.Image, config: dict[str
         int(config["subtitleY"]),
         int(config["subtitleCurve"]),
         int(config["subtitleSize"]),
+        int(config["subtitleRotation"]),
     )
     return image
 
@@ -337,7 +348,7 @@ EDITOR_TEMPLATE = Template(
     </section>
     <aside class="panel">
       <h1>Cover Fine-Tune</h1>
-      <p class="hint">Drag the title, subtitle, or portrait. Adjust size and subtitle curve, then export a ready-to-post PNG.</p>
+      <p class="hint">Drag the title, subtitle, or portrait. Adjust size, subtitle curve, and subtitle rotation, then export a ready-to-post PNG.</p>
 
       <div class="group">
         <div class="seg" id="targetButtons">
@@ -362,9 +373,14 @@ EDITOR_TEMPLATE = Template(
             <input id="subtitleSize" type="range" min="24" max="74" value="$subtitle_size" />
           </label>
         </div>
-        <label>Subtitle curve
-          <input id="subtitleCurve" type="range" min="-32" max="42" value="$subtitle_curve" />
-        </label>
+        <div class="row">
+          <label>Subtitle curve
+            <input id="subtitleCurve" type="range" min="-32" max="42" value="$subtitle_curve" />
+          </label>
+          <label>Subtitle rotation
+            <input id="subtitleRotation" type="range" min="-24" max="24" value="$subtitle_rotation" />
+          </label>
+        </div>
       </div>
 
       <div class="group">
@@ -431,20 +447,34 @@ EDITOR_TEMPLATE = Template(
       lastBounds.title = { x, y, w: metrics.width, h: size * 1.05 };
     }
 
-    function drawSubtitle(text, x, y, size, curve) {
+    function drawSubtitle(text, x, y, size, curve, rotation) {
       ctx.font = size + 'px "PingFang SC", "Hiragino Sans GB", sans-serif';
       ctx.textBaseline = "middle";
       const chars = Array.from(text);
       const spacing = 7;
       const widths = chars.map(ch => ctx.measureText(ch).width);
       const total = widths.reduce((a, b) => a + b, 0) + spacing * Math.max(0, chars.length - 1);
-      let cursor = x - total / 2;
+      let cursor = -total / 2;
       let minX = Infinity, minY = Infinity, maxX = -Infinity, maxY = -Infinity;
+      const rotationRad = rotation * Math.PI / 180;
+      const cos = Math.cos(rotationRad);
+      const sin = Math.sin(rotationRad);
+      function trackPoint(px, py) {
+        const tx = x + px * cos - py * sin;
+        const ty = y + px * sin + py * cos;
+        minX = Math.min(minX, tx);
+        maxX = Math.max(maxX, tx);
+        minY = Math.min(minY, ty);
+        maxY = Math.max(maxY, ty);
+      }
+      ctx.save();
+      ctx.translate(x, y);
+      ctx.rotate(rotationRad);
       chars.forEach((ch, i) => {
         const w = widths[i];
         const cx = cursor + w / 2;
-        const t = (cx - x) / Math.max(1, total / 2);
-        const cy = y + curve * (t * t) - curve * 0.25;
+        const t = cx / Math.max(1, total / 2);
+        const cy = curve * (t * t) - curve * 0.25;
         const angle = t * 7 * Math.PI / 180;
         ctx.save();
         ctx.translate(cx, cy);
@@ -456,12 +486,15 @@ EDITOR_TEMPLATE = Template(
         ctx.fillStyle = "#fbff9a";
         ctx.fillText(ch, -w / 2, 0);
         ctx.restore();
-        minX = Math.min(minX, cx - w / 2 - 12);
-        maxX = Math.max(maxX, cx + w / 2 + 12);
-        minY = Math.min(minY, cy - size / 2 - 18);
-        maxY = Math.max(maxY, cy + size / 2 + Math.abs(curve) + 18);
+        const padX = 14;
+        const padY = size / 2 + Math.abs(curve) + 18;
+        trackPoint(cx - w / 2 - padX, cy - padY);
+        trackPoint(cx + w / 2 + padX, cy - padY);
+        trackPoint(cx - w / 2 - padX, cy + padY);
+        trackPoint(cx + w / 2 + padX, cy + padY);
         cursor += w + spacing;
       });
+      ctx.restore();
       lastBounds.subtitle = { x: minX, y: minY, w: maxX - minX, h: maxY - minY };
     }
 
@@ -496,7 +529,14 @@ EDITOR_TEMPLATE = Template(
       lastBounds.portrait = { x: state.portraitX, y: state.portraitY, w: pw, h: ph };
       drawStrokeText(state.title, state.titleX, state.titleY, state.titleSize);
       if (state.subtitle) {
-        drawSubtitle(state.subtitle, state.subtitleX, state.subtitleY, state.subtitleSize, state.subtitleCurve);
+        drawSubtitle(
+          state.subtitle,
+          state.subtitleX,
+          state.subtitleY,
+          state.subtitleSize,
+          state.subtitleCurve,
+          state.subtitleRotation
+        );
       }
       drawSelection();
       syncControls();
@@ -574,6 +614,7 @@ EDITOR_TEMPLATE = Template(
       document.getElementById("titleSize").value = state.titleSize;
       document.getElementById("subtitleSize").value = state.subtitleSize;
       document.getElementById("subtitleCurve").value = state.subtitleCurve;
+      document.getElementById("subtitleRotation").value = state.subtitleRotation;
       document.getElementById("portraitScale").value = state.portraitScale;
       document.getElementById("solidColor").value = state.solidColor;
       document.getElementById("backgroundMode").value = state.backgroundMode;
@@ -592,7 +633,7 @@ EDITOR_TEMPLATE = Template(
         render();
       });
     }
-    for (const id of ["titleSize", "subtitleSize", "subtitleCurve", "portraitScale"]) {
+    for (const id of ["titleSize", "subtitleSize", "subtitleCurve", "subtitleRotation", "portraitScale"]) {
       document.getElementById(id).addEventListener("input", event => {
         state[id] = Number(event.target.value);
         render();
@@ -657,6 +698,7 @@ def write_editor(
         title_size=config["titleSize"],
         subtitle_size=config["subtitleSize"],
         subtitle_curve=config["subtitleCurve"],
+        subtitle_rotation=config["subtitleRotation"],
         portrait_scale=config["portraitScale"],
         solid_color=solid_color,
     )
@@ -681,6 +723,7 @@ def build_cover(args: argparse.Namespace) -> None:
         "subtitleY": 238,
         "subtitleSize": args.subtitle_size,
         "subtitleCurve": args.subtitle_curve,
+        "subtitleRotation": args.subtitle_rotation,
         "portraitX": int((CANVAS_W - sticker.width * args.portrait_scale) / 2 - 10),
         "portraitY": args.portrait_y,
         "portraitScale": args.portrait_scale,
@@ -715,6 +758,7 @@ def parse_args() -> argparse.Namespace:
     parser.add_argument("--title-size", type=int, default=168)
     parser.add_argument("--subtitle-size", type=int, default=44)
     parser.add_argument("--subtitle-curve", type=int, default=12)
+    parser.add_argument("--subtitle-rotation", type=int, default=0)
     return parser.parse_args()
 
 
