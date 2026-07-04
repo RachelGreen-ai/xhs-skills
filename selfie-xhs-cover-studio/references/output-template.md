@@ -9,6 +9,14 @@ I created a 9-cover Xiaohongshu pack for:
 - audience:
 - visual strategy:
 
+For template-driven jobs, use this shorter summary:
+
+- input image:
+- exact title:
+- selected template style:
+- subtitle / badge:
+- why this template fits:
+
 ## Cover Grid
 
 | # | Style | Angle | Main Title | Subtitle | Visual Direction |
@@ -34,6 +42,7 @@ For final covers, follow `cover-quality-rules.md`: large cutout, thick cream/whi
 ## Text Overlay Spec
 
 - canvas:
+- template style:
 - headline:
 - subtitle:
 - badge:

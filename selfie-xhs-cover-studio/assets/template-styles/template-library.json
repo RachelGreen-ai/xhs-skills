@@ -1,0 +1,40 @@
+{
+  "version": 1,
+  "templates": [
+    {
+      "id": "clean-premium-contour",
+      "name_cn": "高级人像环绕字",
+      "name_en": "Premium Contour Portrait",
+      "best_for": ["AI career pivot", "founder story", "premium personal brand"],
+      "prompt_hint": "Retain useful real-photo background context, create a large portrait cutout with a cream sticker outline, and place 3-5 large title chunks around the person contour. Use cream or mint-white title text with deep green or charcoal stroke. No colored title blocks."
+    },
+    {
+      "id": "food-collage-sticker",
+      "name_cn": "拼贴推荐贴纸风",
+      "name_en": "Collage Recommendation Sticker",
+      "best_for": ["tool list", "recommendation post", "roundup", "comparison"],
+      "prompt_hint": "Create a high-energy collage background with several image-like tiles, a sticker-cut portrait in front, a thick outlined headline, and a diagonal bottom banner. Rebuild clean original collage tiles; do not use watermarked reference images."
+    },
+    {
+      "id": "kraft-grid-labels",
+      "name_cn": "牛皮纸网格标签风",
+      "name_en": "Kraft Grid Labels",
+      "best_for": ["study route", "job search guide", "campus notes", "travel plan"],
+      "prompt_hint": "Use a warm kraft-paper background, white grid-paper area, tape strips, small labels, and a large cutout portrait. Keep labels small and the main title in a strong banner or upper-third composition."
+    },
+    {
+      "id": "outdoor-doodle-bigtype",
+      "name_cn": "户外涂鸦大字风",
+      "name_en": "Outdoor Doodle Big Type",
+      "best_for": ["monthly recap", "learning diary", "motivation", "growth story"],
+      "prompt_hint": "Use a natural green or outdoor-blur background, oversized title text in the upper half, and simple white hand-drawn doodles. Keep the title huge and readable in the feed."
+    },
+    {
+      "id": "sunlit-editorial-story",
+      "name_cn": "阳光故事杂志风",
+      "name_en": "Sunlit Editorial Story",
+      "best_for": ["personal essay", "emotional story", "mindset", "gentle transformation"],
+      "prompt_hint": "Use a sunlit outdoor/photo background, portrait on one side, elegant oversized title chunks, and minimal white arcs or line accents. Keep the palette leaf green, warm sunlight, pale yellow, and white."
+    }
+  ]
+}

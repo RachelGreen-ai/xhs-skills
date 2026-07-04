@@ -1,6 +1,6 @@
 interface:
   display_name: "Selfie XHS Cover Studio"
-  short_description: "XHS covers from one selfie and topic"
-  default_prompt: "Use $selfie-xhs-cover-studio to turn this selfie and post topic into 9 Xiaohongshu-ready cover directions with crisp Chinese text, captions, and reusable visual rules."
+  short_description: "Template XHS covers from one selfie and title"
+  default_prompt: "Use $selfie-xhs-cover-studio to turn this selfie and title into a Xiaohongshu-ready cover using a selected template style, crisp Chinese text, captions, and reusable visual rules."
 policy:
   allow_implicit_invocation: true

@@ -156,6 +156,22 @@ def draw_background_pattern(draw: ImageDraw.ImageDraw, width: int, height: int, 
                 [(offset, height), (offset + 54, height), (offset + height + 54, 0), (offset + height, 0)],
                 fill=stripe,
             )
+    elif pattern == "photo-collage":
+        collage_colors = palette.get("collage", ["#d7e8df", "#f1d3bb", "#c7dff0", "#e7bfd0"])
+        boxes = [
+            (70, 135, 520, 500),
+            (540, 125, width - 70, 445),
+            (80, 535, 450, 860),
+            (470, 500, width - 90, 875),
+            (80, 920, width - 85, 1235),
+        ]
+        for index, box in enumerate(boxes):
+            fill = collage_colors[index % len(collage_colors)]
+            draw.rounded_rectangle(box, radius=18, fill=fill, outline=palette.get("panel_outline", "#17211e"), width=6)
+            x1, y1, x2, y2 = box
+            for stripe_y in range(y1 + 30, y2, 58):
+                draw.line((x1 + 24, stripe_y, x2 - 24, stripe_y + 26), fill=blend(fill, "#ffffff", 0.38), width=7)
+            draw.rectangle((x1 + 18, y1 + 18, x2 - 18, y2 - 18), outline=blend(fill, "#000000", 0.28), width=2)
 
 
 def draw_panel(draw: ImageDraw.ImageDraw, box: tuple[int, int, int, int], fill: str, outline: str | None = None) -> None:

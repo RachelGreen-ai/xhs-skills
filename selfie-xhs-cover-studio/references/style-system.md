@@ -2,6 +2,8 @@
 
 Choose styles by buyer niche and post intent. Do not use all styles at once.
 
+For the productized "one image + one title + one template choice" flow, read `template-style-library.md` first. Use this file for broader 9-cover packs, niche matching, and post-angle variation.
+
 ## Pop Tutorial
 
 Use for AI learning notes, tool tutorials, prompt workflows, and beginner guides.

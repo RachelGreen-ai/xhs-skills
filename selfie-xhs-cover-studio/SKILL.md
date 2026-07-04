@@ -1,6 +1,6 @@
 ---
 name: selfie-xhs-cover-studio
-description: Use this skill when a user wants to turn a selfie, portrait, product photo, or personal-brand topic into Xiaohongshu / RedNote-ready cover images, including style direction, AI image prompts, deterministic Chinese text overlays, caption hooks, hashtag suggestions, contact sheets, and a reusable creator visual system.
+description: Use this skill when a user wants to turn a selfie, portrait, product photo, or personal-brand topic into Xiaohongshu / RedNote-ready cover images, especially when they provide one image plus a title and want to choose a reusable template style. Includes template selection, AI image prompts, deterministic Chinese text overlays, caption hooks, hashtag suggestions, contact sheets, and a reusable creator visual system.
 ---
 
 # Selfie XHS Cover Studio
@@ -9,6 +9,7 @@ description: Use this skill when a user wants to turn a selfie, portrait, produc
 
 Create a ready-to-post Xiaohongshu cover pack from one selfie or portrait:
 
+- template-driven single-cover generation from one image, one title, and a selected style
 - 9 cover concepts, usually 3 styles x 3 title angles
 - 3:4 cover specs with accurate Chinese typography
 - image-generation prompts for portrait/background layers
@@ -31,32 +32,38 @@ Ask only for missing essentials:
 - selfie or portrait image
 - creator niche or account positioning
 - post topic
+- exact title text for the cover
 - target audience
 - preferred language: Chinese, English, or bilingual
-- desired vibe, if any
+- template style, if any
 
-If the user does not know the vibe, choose 3 commercially useful styles from `references/style-system.md`.
+If the user does not know the template style, read `references/template-style-library.md` and recommend 2-3 options.
 
 ## Workflow
 
 1. Inspect the input photo.
    - Flag low-resolution, dark, heavily cropped, hidden-face, or multi-person images.
    - If usable, preserve face identity and improve only lighting, styling, background, crop, and polish.
-2. Choose 3 post angles.
+2. Choose a template mode.
+   - For "one image + one title" requests, use a template style from `references/template-style-library.md`.
+   - For broader ideation, choose 3 post angles and 3 styles.
+   - Never remove watermarks from third-party reference images. Use references as moodboards and rebuild clean original templates.
+3. Choose 3 post angles when making a pack.
    - Use pain point, mistake, transformation, checklist, controversial truth, personal story, expert advice, before/after, money saved, or time saved.
-3. Choose 3 visual styles.
+4. Choose visual styles.
    - Use style presets from `references/style-system.md`.
+   - Use template presets from `references/template-style-library.md` when the buyer wants to choose a reusable template.
    - Match the niche and audience instead of using random aesthetics.
-4. Generate or specify the portrait/background layer.
+5. Generate or specify the portrait/background layer.
    - Do not ask the image model to render Chinese text.
    - Keep the face visible, flattering, and recognizable.
    - Prefer a large portrait cutout with a thick white sticker outline over a small photo card.
    - If preserving the original photo background, crop or blur it so the original small person does not repeat behind the cutout.
-5. Add text deterministically.
+6. Add text deterministically.
    - Use `scripts/render_cover_pack.py` when producing PNGs from a cover JSON spec.
    - Use HTML/CSS, Playwright, PIL, or another deterministic renderer if adapting the workflow.
    - For final covers, prefer contour title placement: short title chunks orbit the person outline instead of sitting in rows.
-6. Package the output.
+7. Package the output.
    - 9 cover files or detailed generation specs
    - contact sheet for fast comparison
    - captions and hashtags
@@ -94,6 +101,14 @@ python3 selfie-xhs-cover-studio/scripts/render_cover_pack.py \
 
 The script accepts a JSON spec with `canvas`, optional `base_image`, and `variants`. Use it after AI image generation or for demo mockups.
 
+Template preview demo:
+
+```bash
+python3 selfie-xhs-cover-studio/scripts/render_cover_pack.py \
+  --spec examples/selfie-xhs-cover-studio/template-cover-spec.json \
+  --out out/selfie-xhs-cover-studio-templates
+```
+
 ## Quality Bar
 
 - Covers must work at phone thumbnail size.
@@ -110,6 +125,8 @@ The script accepts a JSON spec with `canvas`, optional `base_image`, and `varian
 ## References
 
 - Read `references/style-system.md` before choosing styles.
+- Read `references/template-style-library.md` before template-based generation or when learning styles from references.
+- Use `assets/template-styles/template-library.json` as the machine-readable starter template list when building UI choices or adding new templates.
 - Read `references/cover-quality-rules.md` before designing or rendering final covers.
 - Read `references/output-template.md` before generating final deliverable text.
 - Read `references/offer-packaging.md` when preparing marketplace listings, pricing, or sales demos.
