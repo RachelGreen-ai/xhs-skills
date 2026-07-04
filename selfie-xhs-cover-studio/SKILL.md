@@ -33,6 +33,7 @@ Ask only for missing essentials:
 - creator niche or account positioning
 - post topic
 - exact title text for the cover
+- background preference: low-saturation solid color, or retain selfie background
 - target audience
 - preferred language: Chinese, English, or bilingual
 - template style, if any
@@ -62,10 +63,13 @@ If the user does not know the template style, read `references/template-style-li
    - Do not ask the image model to render Chinese text.
    - Keep the face visible, flattering, and recognizable.
    - Prefer a large portrait cutout with a thick white sticker outline over a small photo card.
-   - If preserving the original photo background, crop or blur it so the original small person does not repeat behind the cutout.
+   - If preserving the original photo background, crop or blur it so the original small person does not repeat behind the cutout, then add the foreground person again with a thick white sticker outline.
+   - If not preserving the original photo background, use a clean low-saturation solid color.
 7. Add text deterministically.
    - Use `scripts/render_cover_pack.py` when producing PNGs from a cover JSON spec.
    - Use HTML/CSS, Playwright, PIL, or another deterministic renderer if adapting the workflow.
+   - Use only two text roles: bold big main title and thin subtitle/supporting text.
+   - Place the thin subtitle on a slight curve along the portrait outline when possible.
    - For final covers, prefer contour title placement: short title chunks orbit the person outline instead of sitting in rows.
 8. Package the output.
    - 9 cover files or detailed generation specs
@@ -117,6 +121,8 @@ python3 selfie-xhs-cover-studio/scripts/render_cover_pack.py \
 
 - Covers must work at phone thumbnail size.
 - Chinese text must be real text rendered by a deterministic layer, not hallucinated inside the generated image.
+- Use only two text roles: bold big main title and thin subtitle/supporting text.
+- Use only two base background modes: clean low-saturation solid color, or retained selfie background with thick white portrait outline.
 - Details sell the image: preserve small labels, edge texture, paper/grid/doodle treatments, portrait sticker edges, type angle, and layer depth when applying a template.
 - Use Xiaohongshu-native visual language: bold outlined headlines, large portrait cutouts, contour title stickers, light doodles, and information-rich layouts. Use bright blocks only for explicitly loud/pop variants.
 - Main title color should usually be unified across chunks; use black and white outlines for contrast instead of making every word a different color.

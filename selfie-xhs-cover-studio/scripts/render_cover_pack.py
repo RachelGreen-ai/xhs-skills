@@ -19,13 +19,23 @@ from PIL import Image, ImageDraw, ImageFont
 
 
 DEFAULT_CANVAS = {"width": 1242, "height": 1656}
-FONT_CANDIDATES = [
+TITLE_FONT_CANDIDATES = [
     os.environ.get("XHS_FONT"),
+    os.environ.get("XHS_TITLE_FONT"),
     str(Path(__file__).resolve().parents[1] / "assets/fonts/ZCOOLKuaiLe-Regular.ttf"),
     "/System/Library/Fonts/Hiragino Sans GB.ttc",
     "/System/Library/Fonts/STHeiti Medium.ttc",
     "/System/Library/Fonts/Supplemental/Songti.ttc",
     "/Library/Fonts/Arial Unicode.ttf",
+    "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
+    "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
+]
+SUBTITLE_FONT_CANDIDATES = [
+    os.environ.get("XHS_SUBTITLE_FONT"),
+    "/System/Library/Fonts/STHeiti Light.ttc",
+    "/System/Library/Fonts/Hiragino Sans GB.ttc",
+    "/System/Library/Fonts/Supplemental/Songti.ttc",
+    "/System/Library/Fonts/STHeiti Medium.ttc",
     "/usr/share/fonts/opentype/noto/NotoSansCJK-Regular.ttc",
     "/usr/share/fonts/truetype/noto/NotoSansCJK-Regular.ttc",
 ]
@@ -38,15 +48,16 @@ def hex_to_rgb(value: str) -> tuple[int, int, int]:
     return tuple(int(value[i : i + 2], 16) for i in (0, 2, 4))
 
 
-def find_font() -> str | None:
-    for candidate in FONT_CANDIDATES:
+def find_font(role: str = "title") -> str | None:
+    candidates = SUBTITLE_FONT_CANDIDATES if role == "subtitle" else TITLE_FONT_CANDIDATES
+    for candidate in candidates:
         if candidate and Path(candidate).exists():
             return candidate
     return None
 
 
-def font(size: int) -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
-    font_path = find_font()
+def font(size: int, role: str = "title") -> ImageFont.FreeTypeFont | ImageFont.ImageFont:
+    font_path = find_font(role)
     if font_path:
         return ImageFont.truetype(font_path, size=size)
     return ImageFont.load_default(size=size)
@@ -80,13 +91,20 @@ def wrap_text(draw: ImageDraw.ImageDraw, text: str, face: ImageFont.ImageFont, m
     return lines
 
 
-def fit_font(draw: ImageDraw.ImageDraw, text: str, max_width: int, start_size: int, min_size: int) -> ImageFont.ImageFont:
+def fit_font(
+    draw: ImageDraw.ImageDraw,
+    text: str,
+    max_width: int,
+    start_size: int,
+    min_size: int,
+    role: str = "title",
+) -> ImageFont.ImageFont:
     for size in range(start_size, min_size - 1, -2):
-        face = font(size)
+        face = font(size, role)
         lines = wrap_text(draw, text, face, max_width)
         if lines and max(text_width(draw, line, face) for line in lines) <= max_width:
             return face
-    return font(min_size)
+    return font(min_size, role)
 
 
 def make_gradient(size: tuple[int, int], top: str, bottom: str) -> Image.Image:
@@ -112,7 +130,7 @@ def blend(color: str, target: str, amount: float) -> str:
 
 def cover_background(spec: dict[str, Any], width: int, height: int, root: Path) -> Image.Image:
     base_image = spec.get("base_image")
-    if base_image:
+    if base_image and spec.get("background_mode", "photo") == "photo":
         path = Path(base_image)
         if not path.is_absolute():
             path = root / path
@@ -125,6 +143,9 @@ def cover_background(spec: dict[str, Any], width: int, height: int, root: Path) 
             return image.resize((width, height), Image.Resampling.LANCZOS)
 
     palette = spec.get("palette", {})
+    if spec.get("background_mode") == "solid":
+        return Image.new("RGB", (width, height), palette.get("background_solid", palette.get("background_top", "#fbfbf7")))
+
     return make_gradient(
         (width, height),
         palette.get("background_top", "#fbfbf7"),
@@ -339,6 +360,37 @@ def draw_rotated_text(
     image.alpha_composite(layer, (x, y))
 
 
+def draw_arc_text(
+    image: Image.Image,
+    text: str,
+    center: tuple[int, int],
+    radius: int,
+    start_angle: float,
+    angle_step: float,
+    face: ImageFont.ImageFont,
+    fill: str,
+    stroke_width: int,
+    stroke_fill: str,
+) -> None:
+    for index, char in enumerate(text):
+        if char.isspace():
+            continue
+        angle = start_angle + index * angle_step
+        radians = math.radians(angle)
+        x = int(center[0] + math.cos(radians) * radius)
+        y = int(center[1] + math.sin(radians) * radius)
+        draw_rotated_text(
+            image,
+            char,
+            (x, y),
+            face,
+            fill,
+            stroke_width,
+            stroke_fill,
+            angle + 90,
+        )
+
+
 def draw_contour_chunks(image: Image.Image, variant: dict[str, Any], width: int, height: int) -> bool:
     chunks = variant.get("contour_chunks", [])
     if not chunks:
@@ -354,7 +406,7 @@ def draw_contour_chunks(image: Image.Image, variant: dict[str, Any], width: int,
         chunk_text = str(chunk.get("text", "")).strip()
         if not chunk_text:
             continue
-        chunk_face = font(int(chunk.get("size", default_size)))
+        chunk_face = font(int(chunk.get("size", default_size)), chunk.get("role", "title"))
         x = resolve_position(chunk.get("x", 0.5), width)
         y = resolve_position(chunk.get("y", 0.5), height)
         draw_rotated_text(
@@ -366,6 +418,28 @@ def draw_contour_chunks(image: Image.Image, variant: dict[str, Any], width: int,
             int(chunk.get("stroke_width", default_stroke)),
             chunk.get("stroke_fill", stroke_fill),
             float(chunk.get("angle", 0)),
+        )
+
+    for arc in variant.get("arc_subtitles", []):
+        arc_text = str(arc.get("text", "")).strip()
+        if not arc_text:
+            continue
+        arc_face = font(int(arc.get("size", 38)), "subtitle")
+        center = (
+            resolve_position(arc.get("x", 0.5), width),
+            resolve_position(arc.get("y", 0.5), height),
+        )
+        draw_arc_text(
+            image,
+            arc_text,
+            center,
+            int(arc.get("radius", 300)),
+            float(arc.get("start_angle", -65)),
+            float(arc.get("angle_step", 8)),
+            arc_face,
+            arc.get("fill", palette.get("subtitle_text", "#fffaf0")),
+            int(arc.get("stroke_width", 2)),
+            arc.get("stroke_fill", palette.get("subtitle_stroke", "#173d35")),
         )
     return True
 
@@ -395,11 +469,11 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
         draw_contour_chunks(image, variant, width, height)
         badge = variant.get("badge")
         if badge:
-            badge_font = font(int(variant.get("badge_size", 36)))
+            badge_font = font(int(variant.get("badge_size", 36)), "subtitle")
             draw.text((margin, margin), badge, font=badge_font, fill=palette.get("muted", "#5f5f5f"))
         kicker = variant.get("kicker")
         if kicker:
-            small = font(30)
+            small = font(30, "subtitle")
             draw.text((margin, height - 52), kicker, font=small, fill=muted)
         return image.convert("RGB")
 
@@ -430,7 +504,7 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
 
     badge = variant.get("badge")
     if badge:
-        badge_font = font(34)
+        badge_font = font(34, "subtitle")
         badge_w = int(text_width(draw, badge, badge_font)) + 42
         if variant.get("badge_style") == "burst":
             draw_burst(draw, (x + badge_w // 2, y + 30), max(42, badge_w // 2), accent)
@@ -455,13 +529,13 @@ def render_cover(variant: dict[str, Any], canvas: dict[str, int], root: Path) ->
 
     subtitle = variant.get("subtitle")
     if subtitle:
-        subtitle_face = fit_font(draw, subtitle, max_width, int(variant.get("subtitle_size", 42)), 28)
+        subtitle_face = fit_font(draw, subtitle, max_width, int(variant.get("subtitle_size", 42)), 28, "subtitle")
         y += 20
         draw_multiline(draw, subtitle, (x, y), subtitle_face, muted, max_width, 10)
 
     kicker = variant.get("kicker")
     if kicker:
-        small = font(30)
+        small = font(30, "subtitle")
         draw.text((margin, height - 52), kicker, font=small, fill=muted)
 
     return image.convert("RGB")
@@ -475,7 +549,7 @@ def make_contact_sheet(images: list[tuple[str, Image.Image]], out_path: Path) ->
     rows = math.ceil(len(images) / columns)
     sheet = Image.new("RGB", (columns * thumb_w, rows * (thumb_h + label_h)), "#f4f1ea")
     draw = ImageDraw.Draw(sheet)
-    label_font = font(24)
+    label_font = font(24, "subtitle")
 
     for index, (label, image) in enumerate(images):
         x = (index % columns) * thumb_w

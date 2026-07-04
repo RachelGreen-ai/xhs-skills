@@ -14,6 +14,7 @@ For template-driven jobs, use this shorter summary:
 - input image:
 - exact title:
 - selected template style:
+- background mode:
 - subtitle / badge:
 - why this template fits:
 
@@ -47,6 +48,10 @@ For final covers, follow `cover-quality-rules.md`: large cutout, thick cream/whi
 - subtitle:
 - badge:
 - font direction:
+- font roles:
+  - main title: bold big title font
+  - subtitle/support text: thin font, lightly curved along portrait outline when possible
+- background mode:
 - headline placement:
 - contour placement plan:
 - safe margins:

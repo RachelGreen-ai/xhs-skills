@@ -1,5 +1,13 @@
 {
   "version": 1,
+  "typography_roles": {
+    "title": "bold, large, chunky main title",
+    "subtitle": "thin supporting text, preferably curved lightly along the portrait outline"
+  },
+  "background_modes": [
+    "low_saturation_solid",
+    "retained_selfie_background_with_thick_white_portrait_outline"
+  ],
   "templates": [
     {
       "id": "clean-premium-contour",
