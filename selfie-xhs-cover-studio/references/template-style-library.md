@@ -2,7 +2,9 @@
 
 Use this reference when the buyer wants a template-driven flow: one image, one title, and one selected template style.
 
-Do not remove watermarks from third-party reference images or package watermarked references as template assets. Treat references as moodboards only: extract layout, color, type hierarchy, and composition, then rebuild clean original templates.
+When the creator provides reference covers, use them as template sources at the level of craft: layout, color, type hierarchy, foreground/background layering, sticker edges, small labels, texture, doodles, and title motion. Do not reduce them to a broad vibe word.
+
+Do not remove watermarks from third-party reference images or package watermarked references as template assets unless the creator confirms usage rights. Treat references as moodboards by default: extract layout, color, type hierarchy, and composition, then rebuild clean original templates.
 
 ## User Entry Flow
 
@@ -82,6 +84,7 @@ Before final delivery, verify:
 - template style is recognizable without copying a watermarked reference
 - Chinese text is deterministic and not hallucinated by the image model
 - the buyer can reuse the same template with a new title/photo
+- at least 5 template-specific details are present, such as sticker outline, tiny label, paper texture, doodle marks, edge microcopy, title slant, or foreground overlap
 
 ## Adding New Templates
 

@@ -41,29 +41,33 @@ If the user does not know the template style, read `references/template-style-li
 
 ## Workflow
 
-1. Inspect the input photo.
+1. Understand the buyer and use case.
+   - Read `references/buyer-persona.md` when choosing defaults, writing marketplace copy, or judging whether a cover feels sellable.
+   - Prioritize speed, platform-native taste, readable Chinese typography, and reusable template choices.
+2. Inspect the input photo.
    - Flag low-resolution, dark, heavily cropped, hidden-face, or multi-person images.
    - If usable, preserve face identity and improve only lighting, styling, background, crop, and polish.
-2. Choose a template mode.
+3. Choose a template mode.
    - For "one image + one title" requests, use a template style from `references/template-style-library.md`.
    - For broader ideation, choose 3 post angles and 3 styles.
-   - Never remove watermarks from third-party reference images. Use references as moodboards and rebuild clean original templates.
-3. Choose 3 post angles when making a pack.
+   - Read `references/reference-template-breakdown.md` when learning from provided examples or making template previews.
+   - Never remove watermarks from third-party reference images. Use references as moodboards and rebuild clean original templates unless the creator confirms usage rights.
+4. Choose 3 post angles when making a pack.
    - Use pain point, mistake, transformation, checklist, controversial truth, personal story, expert advice, before/after, money saved, or time saved.
-4. Choose visual styles.
+5. Choose visual styles.
    - Use style presets from `references/style-system.md`.
    - Use template presets from `references/template-style-library.md` when the buyer wants to choose a reusable template.
    - Match the niche and audience instead of using random aesthetics.
-5. Generate or specify the portrait/background layer.
+6. Generate or specify the portrait/background layer.
    - Do not ask the image model to render Chinese text.
    - Keep the face visible, flattering, and recognizable.
    - Prefer a large portrait cutout with a thick white sticker outline over a small photo card.
    - If preserving the original photo background, crop or blur it so the original small person does not repeat behind the cutout.
-6. Add text deterministically.
+7. Add text deterministically.
    - Use `scripts/render_cover_pack.py` when producing PNGs from a cover JSON spec.
    - Use HTML/CSS, Playwright, PIL, or another deterministic renderer if adapting the workflow.
    - For final covers, prefer contour title placement: short title chunks orbit the person outline instead of sitting in rows.
-7. Package the output.
+8. Package the output.
    - 9 cover files or detailed generation specs
    - contact sheet for fast comparison
    - captions and hashtags
@@ -113,6 +117,7 @@ python3 selfie-xhs-cover-studio/scripts/render_cover_pack.py \
 
 - Covers must work at phone thumbnail size.
 - Chinese text must be real text rendered by a deterministic layer, not hallucinated inside the generated image.
+- Details sell the image: preserve small labels, edge texture, paper/grid/doodle treatments, portrait sticker edges, type angle, and layer depth when applying a template.
 - Use Xiaohongshu-native visual language: bold outlined headlines, large portrait cutouts, contour title stickers, light doodles, and information-rich layouts. Use bright blocks only for explicitly loud/pop variants.
 - Main title color should usually be unified across chunks; use black and white outlines for contrast instead of making every word a different color.
 - Use 3-5 large title chunks around the portrait contour. Avoid long sentence subtitles and one-line-one-row layouts.
@@ -124,8 +129,10 @@ python3 selfie-xhs-cover-studio/scripts/render_cover_pack.py \
 
 ## References
 
+- Read `references/buyer-persona.md` before making product, pricing, template, or marketplace decisions.
 - Read `references/style-system.md` before choosing styles.
 - Read `references/template-style-library.md` before template-based generation or when learning styles from references.
+- Read `references/reference-template-breakdown.md` before using creator-provided reference images as template inspiration.
 - Use `assets/template-styles/template-library.json` as the machine-readable starter template list when building UI choices or adding new templates.
 - Read `references/cover-quality-rules.md` before designing or rendering final covers.
 - Read `references/output-template.md` before generating final deliverable text.

@@ -24,13 +24,14 @@ Upload a selfie, give me your exact title, and choose a template style. I will g
 - contour title layouts where words wrap around the person instead of sitting in rows
 - premium palette options without loud red/yellow title blocks
 - 5 starter template styles: premium contour, collage sticker, kraft grid labels, outdoor doodle big type, sunlit editorial story
+- detail-rich template rules: sticker edges, grid/paper texture, micro labels, doodle marks, title slant, and foreground overlap
 - caption hooks, post title options, and hashtags
 - a reusable creator brand kit for future posts
 - QA for face visibility, title readability, thumbnail impact, and platform-native style
 
 ## Why It Sells
 
-Most AI cover tools make either pretty images with broken Chinese text, or flat text cards with no personal presence. This skill combines your real face, reusable template styles, Xiaohongshu-style cutout composition, contour-following title stickers, cleaner premium color systems, and deterministic Chinese typography.
+Most AI cover tools make either pretty images with broken Chinese text, or flat text cards with no personal presence. This skill combines your real face, reusable template styles, Xiaohongshu-style cutout composition, contour-following title stickers, detail-rich layout rules, cleaner premium color systems, and deterministic Chinese typography.
 
 ## Example Use Cases
 
