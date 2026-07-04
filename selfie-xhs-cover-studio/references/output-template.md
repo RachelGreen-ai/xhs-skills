@@ -55,6 +55,7 @@ For final covers, follow `cover-quality-rules.md`: large cutout, thick cream/whi
 - headline placement:
 - contour placement plan:
 - portrait avoidance plan for main title:
+- crop plan:
 - subtitle placement:
 - safe margins:
 - color palette:
@@ -98,8 +99,10 @@ Hashtags:
 ## QA Checklist
 
 - face is recognizable
+- crop emphasizes head and upper body when lower body distracts from the hook
 - no broken text inside the image layer
 - Chinese title is readable at thumbnail size
+- top title safe space is preserved when requested
 - main title chunks orbit the portrait contour and do not overlap the portrait cutout
 - provided subtitle is visible and readable
 - main title uses one dominant color with strong outline contrast

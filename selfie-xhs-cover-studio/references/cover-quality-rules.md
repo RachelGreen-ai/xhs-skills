@@ -20,6 +20,7 @@ If the cover only works when opened full-screen, redesign it.
 - Add a thin black outer edge or shadow outside the white outline when the background is busy.
 - Let the person overlap background decorations and small accents, but never let the main title cover the face, body, or key silhouette.
 - Preserve the original photo background when it adds context, but crop or blur it so the original small person does not repeat behind the cutout.
+- For selfies where the lower body, legs, or shoes dominate the frame, crop the foreground to head and upper body before making the sticker cutout. Put the cutout low enough that the top third remains clean title space.
 
 ## Background Rules
 
@@ -35,12 +36,13 @@ Do not use busy generated backgrounds, generic gradients, large collage/photo ti
 - Keep title copy short. Prefer 3-5 chunks, not a sentence.
 - Arrange title chunks around the person contour: near head, shoulder, waist, or body edge.
 - Main title chunks must sit in negative space around the portrait. They may hug the outline, but they must not overlay the portrait cutout.
+- If the composition reserves top negative space, keep the main title horizontal and parallel to the cover edges. Use scale, stroke, and font shape for energy instead of tilting the whole headline.
 - Do not stack everything in horizontal rows.
 - Do not place important text at the extreme image edges.
 - Use exactly two text roles:
   - main title: bold, large, chunky, feed-readable
   - subtitle/supporting text: thin font, visibly readable, preferably curved lightly along the portrait outline
-- If the user provides a subtitle, it is mandatory: place it clearly, usually as thin curved text along the portrait outline or as a small readable line in safe space.
+- If the user provides a subtitle, it is mandatory: place it clearly, usually as thin curved text just outside the portrait outline or as a small readable line in safe space. Curved subtitle text may follow the white sticker border, but it must not touch the person, overlap the outline, or sit at the extreme cover edge.
 - Use bright fill colors for all readable text by default. For premium covers, prefer cream, warm white, mint-white, or pale lemon with dark green/charcoal stroke.
 - Make the title playful through font shape, rotation, chunky scale, and contour placement; do not rely on colored word backgrounds for energy.
 - Do not put a colored background block behind every title word by default. Use text shape, stroke, shadow, and placement first.

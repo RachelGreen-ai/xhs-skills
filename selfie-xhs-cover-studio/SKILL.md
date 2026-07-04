@@ -63,6 +63,7 @@ If the user does not know the template style, read `references/template-style-li
    - Do not ask the image model to render Chinese text.
    - Keep the face visible, flattering, and recognizable.
    - Prefer a large portrait cutout with a thick white sticker outline over a small photo card.
+   - For casual selfies where the lower body pulls attention away from the hook, crop the foreground to head and upper body first, then place the cutout lower on the canvas so the top third stays open for the title.
    - If preserving the original photo background, crop or blur it so the original small person does not repeat behind the cutout, then add the foreground person again with a thick white sticker outline.
    - If not preserving the original photo background, use a clean low-saturation solid color.
 7. Add text deterministically.
@@ -70,8 +71,9 @@ If the user does not know the template style, read `references/template-style-li
    - Use HTML/CSS, Playwright, PIL, or another deterministic renderer if adapting the workflow.
    - Use only two text roles: bold big main title and thin subtitle/supporting text.
    - Place the bold main title in negative space around the portrait; it must not overlay the person.
+   - When the user asks for top negative space, keep the main title horizontal and parallel to the cover edges.
    - If the user provides a subtitle, render it clearly. Do not omit it or hide it as tiny edge decoration.
-   - Place the thin subtitle on a slight curve along the portrait outline when possible.
+   - Place the thin subtitle on a slight curve outside the portrait outline when possible. It can follow the white sticker border, but must not touch the person, overlap the outline, or sit at the extreme cover edge.
    - For final covers, prefer contour title placement: short title chunks orbit the person outline instead of sitting in rows.
 8. Package the output.
    - 9 cover files or detailed generation specs
