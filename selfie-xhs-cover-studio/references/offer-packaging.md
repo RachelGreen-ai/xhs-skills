@@ -2,9 +2,9 @@
 
 ## Positioning
 
-Do not sell this as "AI image generation." Sell it as a creator asset pack:
+Do not sell this as "AI image generation." Sell it as an editable creator cover kit:
 
-"Upload one selfie and one AI, job-search, or creator-tool topic. Get 9 Xiaohongshu-ready covers with accurate Chinese typography, lively platform-native layouts, captions, and reusable visual rules."
+"Upload one selfie, one title, and one subtitle. Get an editable Xiaohongshu cover editor with crisp Chinese typography, a portrait sticker cutout, draggable text/portrait layers, subtitle curve controls, and one-click PNG export."
 
 ## Buyer Pain
 
@@ -13,12 +13,17 @@ Do not sell this as "AI image generation." Sell it as a creator asset pack:
 - "I do not know which visual style fits my account."
 - "I spend too long making covers for each post."
 - "I need my face to look like me, but the cover still needs Xiaohongshu energy."
+- "AI gets me 80 percent there, but I still need to nudge the title, subtitle, and crop."
 
 ## Differentiators
 
 - identity-preserving portrait direction
 - deterministic Chinese text overlay
-- 9 variants, not 1 image
+- interactive HTML editor, not just 1 static image
+- draggable title, subtitle, and portrait layers
+- subtitle curve and font-size controls
+- direct PNG export
+- 9 variants available as an upsell pack
 - title and caption pack included
 - reusable brand rules for future posts
 - PNG render script for contact sheets and crisp text
@@ -29,30 +34,31 @@ Do not sell this as "AI image generation." Sell it as a creator asset pack:
 
 Starter, US$19:
 
-- 9 concept specs
+- 1 editable cover kit
+- preview PNG
 - caption hooks
-- no manual polish guarantee
+- no manual polish guarantee beyond the generated editor
 
 Pro, US$49:
 
-- 9 final 3:4 covers
-- contact sheet
+- 3 editable cover kits
+- 3 preview PNGs
 - caption pack
 - brand rules
 
 Creator Pack, US$99:
 
-- 30 covers for 10 post topics
+- 10 editable covers for one content theme
 - 3 recurring visual formats
 - profile-level positioning notes
 
 ## Demo Script
 
 1. Show the original selfie.
-2. Show the 9-cover AI/career contact sheet.
-3. Zoom into one cover and point out the large person cutout, white outline, unified title color, and contour-following text.
-4. Show the caption hooks for AI learning, job search, or skill launch content.
-5. Show the reusable visual rules.
+2. Show `preview.png` with the large person cutout, white outline, unified title color, and readable title lockup.
+3. Open `interactive-editor.html`.
+4. Drag the subtitle lower, adjust the subtitle curve, switch solid/photo background, and export PNG.
+5. Show the caption hooks and reusable visual rules.
 
 ## Upsells
 

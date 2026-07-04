@@ -1,20 +1,23 @@
 ---
 name: selfie-xhs-cover-studio
-description: Use this skill when a user wants to turn a selfie, portrait, product photo, or personal-brand topic into Xiaohongshu / RedNote-ready cover images, especially when they provide one image plus a title and want to choose a reusable template style. Includes template selection, AI image prompts, deterministic Chinese text overlays, caption hooks, hashtag suggestions, contact sheets, and a reusable creator visual system.
+description: Use this skill when a user wants to turn a selfie, portrait, product photo, or personal-brand topic into an editable Xiaohongshu / RedNote cover. Best for one image plus a title/subtitle, with an interactive HTML editor for dragging the title, subtitle, and portrait, adjusting subtitle curve and font sizes, and exporting a ready-to-post PNG. Also supports static cover packs, template selection, deterministic Chinese text overlays, caption hooks, contact sheets, and reusable creator visual rules.
 ---
 
 # Selfie XHS Cover Studio
 
 ## Outcome
 
-Create a ready-to-post Xiaohongshu cover pack from one selfie or portrait:
+Create a ready-to-post Xiaohongshu cover kit from one selfie or portrait:
 
-- template-driven single-cover generation from one image, one title, and a selected style
+- editable single-cover generation from one image, one title, and one optional subtitle
+- interactive HTML editor for micro-adjusting title, subtitle, portrait position, subtitle curve, font size, and background mode
+- direct PNG export from the editor
 - 9 cover concepts, usually 3 styles x 3 title angles
 - 3:4 cover specs with accurate Chinese typography
 - image-generation prompts for portrait/background layers
 - caption hooks, hashtags, and reusable creator brand rules
-- optional PNG covers and contact sheet via `scripts/render_cover_pack.py`
+- editable cover kit via `scripts/create_interactive_cover.py`
+- optional static PNG covers and contact sheet via `scripts/render_cover_pack.py`
 
 Sell the finished creator asset pack, not the AI tooling.
 
@@ -67,6 +70,7 @@ If the user does not know the template style, read `references/template-style-li
    - If preserving the original photo background, crop or blur it so the original small person does not repeat behind the cutout, then add the foreground person again with a thick white sticker outline.
    - If not preserving the original photo background, use one clean low-saturation solid color across the whole canvas. Do not split the solid background into bands unless the user explicitly asks for a paper/card template.
 7. Add text deterministically.
+   - Use `scripts/create_interactive_cover.py` for the lowest sellable product: one polished editable cover kit that the buyer can fine-tune and export.
    - Use `scripts/render_cover_pack.py` when producing PNGs from a cover JSON spec.
    - Use HTML/CSS, Playwright, PIL, or another deterministic renderer if adapting the workflow.
    - Use only two text roles: bold big main title and thin subtitle/supporting text.
@@ -77,8 +81,10 @@ If the user does not know the template style, read `references/template-style-li
    - Use portrait-outline subtitle placement only when it strengthens the composition. It can follow the white sticker border, but must not touch the person, overlap the outline, or sit at the extreme cover edge.
    - For final covers, prefer contour title placement: short title chunks orbit the person outline instead of sitting in rows.
 8. Package the output.
-   - 9 cover files or detailed generation specs
-   - contact sheet for fast comparison
+   - editable `interactive-editor.html` for one-cover jobs
+   - `preview.png`, layer assets, and `cover-config.json`
+   - 9 cover files or detailed generation specs for pack jobs
+   - contact sheet for fast comparison when making packs
    - captions and hashtags
    - reusable creator brand rules
 
@@ -87,7 +93,8 @@ If the user does not know the template style, read `references/template-style-li
 Return:
 
 - buyer-facing summary
-- cover grid plan: 9 variants with style, title, subtitle, and visual direction
+- editable cover plan: title lockup, subtitle behavior, portrait crop, background mode, and export path
+- cover grid plan for pack jobs: 9 variants with style, title, subtitle, and visual direction
 - exact image-generation prompts for background/portrait layer
 - text overlay specs: canvas size, typography, color, placement, safe margins
 - caption pack: title, opening line, caption starter, hashtags
@@ -96,6 +103,12 @@ Return:
 
 If producing files, save:
 
+- `interactive-editor.html`
+- `preview.png`
+- `background-photo.png`
+- `background-solid.png`
+- `portrait-sticker.png`
+- `cover-config.json`
 - `covers/cover-01.png` through `covers/cover-09.png`
 - `covers/contact-sheet.png`
 - `caption-pack.md`
@@ -103,6 +116,21 @@ If producing files, save:
 - optional `cover-spec.json`
 
 ## Rendering PNGs
+
+Use the interactive script for the default sellable flow:
+
+```bash
+python3 selfie-xhs-cover-studio/scripts/create_interactive_cover.py \
+  --image /absolute/path/to/selfie.jpg \
+  --title "《暑假》" \
+  --subtitle "2026上半年小结" \
+  --background-mode solid \
+  --output-dir out/my-editable-xhs-cover
+```
+
+Open `interactive-editor.html`, drag the title/subtitle/portrait, adjust sliders, then click **Export PNG**. The HTML is self-contained: it embeds the generated layer images and title font so it can be moved with fewer broken-path failures.
+
+Dependencies: Pillow is required. `rembg` is optional but recommended for commercial-quality portrait cutouts; without it, the script still creates an editable HTML kit, but the portrait layer will not be cleanly removed from its background.
 
 Use the script when a deterministic text layer is needed:
 
